@@ -1,4 +1,7 @@
 package com.techelevator.dao;
 
-public class JdbcAccountDao {
+import org.springframework.stereotype.Component;
+
+@Component
+public class JdbcAccountDao implements AccountDao {
 }
