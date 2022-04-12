@@ -4,5 +4,5 @@ import com.techelevator.model.ParentAccount;
 
 public interface FamilyDao {
 
-    public void createParentAccount(ParentAccount parent);
+    public void createParentAccount(ParentAccount parent, String username);
 }

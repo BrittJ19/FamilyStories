@@ -30,9 +30,9 @@ public class JdbcFamilyDao implements FamilyDao{
 //        String sql = ''
 //    }
     @Override
-    public void createParentAccount(ParentAccount parent) {
-        String sql = "INSERT INTO accounts (account_name, account_type, user_id) VALUES (?,?, ?)";
-        jdbcTemplate.update(sql, parent.getName(), parent.getType(), parent.getUserId());
+    public void createParentAccount(ParentAccount parent, String username) {
+        String sql = "INSERT INTO accounts (account_name, account_type, user_id) VALUES (?,?,(SELECT user_id FROM users WHERE username = ?))";
+        jdbcTemplate.update(sql, parent.getName(), parent.getType(), username);
 
     }
 }

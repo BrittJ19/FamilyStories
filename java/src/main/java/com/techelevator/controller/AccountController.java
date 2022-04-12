@@ -27,7 +27,7 @@ public class AccountController {
     }
 
     @RequestMapping(path= "/family/parentaccount", method = RequestMethod.POST)
-    public void addParentAccount(@RequestBody ParentAccount parent) {
-        familyDao.createParentAccount(parent);
+    public void addParentAccount(@RequestBody  ParentAccount parent, @PathVariable String username) {
+        familyDao.createParentAccount(parent, username);
     }
 }
