@@ -24,8 +24,7 @@ public class Book {
         this.pagination = pagination;
     }
 
-    public String getBookTitle() {
-        return bookTitle;
+    public String getBookTitle() {return bookTitle;
     }
 
     public void setBookTitle(String bookTitle) {

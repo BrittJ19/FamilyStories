@@ -11,6 +11,6 @@ public interface BookDao {
 //
 //    public void findBookByTitle(String title);
 
-    List<Book> addBook();
+    List<Book> addBook(Book book);
 
 }
