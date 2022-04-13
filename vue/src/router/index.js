@@ -6,6 +6,10 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Family from '../views/Family.vue'
+import FamilyAccounts from '../views/FamilyAccounts.vue'
+import AboutUs from '../views/AboutUs'
+import Charities from '../views/Charities'
+import Profile from '../views/Profile'
 
 Vue.use(Router)
 
@@ -58,7 +62,28 @@ const router = new Router({
       path: "/family",
       name: "family",
       component: Family
+    },
+    {
+    path:"/family/newAccount",
+    name: "newAccount",
+    component: FamilyAccounts
+    },
+    {
+      path:"/aboutus",
+      name: "aboutUs",
+      component: AboutUs
+    },
+    {
+      path:"/charities",
+      name:"charities",
+      component: Charities
+    },
+    {
+      path:"/profile/:username",
+      name:"userProfile",
+      component: Profile
     }
+
   ]
 })
 
