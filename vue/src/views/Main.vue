@@ -1,33 +1,34 @@
-<template>
+
+  <template>
   <div id="app">
-    <!-- <head>
+    <head>
   <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap" rel="stylesheet">
 </head>
     <div id="nav">
       <img id="logo" src="/offWhiteLogo.png">
-      <img id="catchphrase" src="/logoText.png"> -->
+      <img id="catchphrase" src="/logoText.png">
       <!-- <div id="text">
       <h1 id="logoText">FAMILY STORIES</h1>
       <h3 id="phrase">Growing minds, families, and communities one page at a time.</h3>
       </div> -->
       <!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
-      <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       <div id="innerNav">
         <div id="site-links">
         <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us</router-link>
         <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
-        </div> -->
+        </div>
       <router-view id="login" />
-      <!-- </div>
+      </div>
     </div>
     <div id="promo">
       <p>JOIN TODAY AND GET AN EXTRA $5 FOR CHARITY UPON COMPLETING 500 PAGES!</p>
-      </div> -->
+      </div>
     <!-- <slider /> -->
-    <!-- <img id="familyReading" src="/shutterstock_1690275997.jpg"> -->
+    <img id="familyReading" src="/shutterstock_1690275997.jpg">
   </div>
 </template>
 
@@ -41,8 +42,8 @@ export default {
 };
 </script>
 
-<style>
-/* @import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
+<style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&display=swap');
 #app {
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -56,11 +57,11 @@ body {
 }
 
 #nav{
-  display: flex; */
+  display: flex;
   /* background-color: rgb(64,224,208); */
   /* background-color: darkorange; */
  
-/* }
+}
 
  #logo{
    width: 180px;
@@ -82,9 +83,9 @@ body {
  }
  #nav{
    display: flex;
-   align-content: center; */
+   align-content: center;
    /* flex-direction: column; */
-   /* justify-content: space-between
+   justify-content: space-between
  }
 
  #familyReading{
@@ -106,9 +107,9 @@ body {
    align-content: space-between;
    font-size: 80px;
    font-family: 'Amaranth', sans-serif;
-   align-items: stretch; */
+   align-items: stretch;
    /* -webkit-text-stroke: 2px rgb(150,165,60) */
- /* }  
+ }  
 
  #promo{
    display: flex;
@@ -153,10 +154,10 @@ body {
    align-items: stretch;
    align-content: flex-start;
    justify-content: center;
-   margin-top: px;
- } */
+   margin-top: 10px;
+ }
 
- /* #home{
+ #home{
    color: rgb(245,245,220);
    text-decoration: none;
    margin-right: 30px;
@@ -183,5 +184,15 @@ body {
    justify-content: flex-end;
    flex-grow: 1;
    height: 5px;
- } */
+ }
+</style>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
 </style>

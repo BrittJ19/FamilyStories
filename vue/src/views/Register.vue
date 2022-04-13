@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <h1 class="h3 mb-3 font-weight-normal">Create Account</h1>
+      <!-- <h1 class="h3 mb-3 font-weight-normal">Create Account</h1> -->
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -32,10 +32,13 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }">Have an account?</router-link>
+      <div id="buttons">
+      <!-- <router-link id="account" :to="{ name: 'login' }">Have an account?</router-link> -->
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
+      <router-link id="account" :to="{ name: 'login' }">Have an account?</router-link>
+      </div>
     </form>
   </div>
 </template>
@@ -90,4 +93,65 @@ export default {
 };
 </script>
 
-<style></style>
+
+<style>
+
+.sr-only{
+display: flex;  
+background-color: rgb(255,196,12);
+padding: 10px;
+margin: 5px;
+justify-content: center;
+align-content: center;
+align-self: center;
+border-radius: 10px;
+
+}
+
+#register{
+  display: flex;
+border-width: 10px;
+border-color: rgb(79,134,247);
+align-content: space-between;
+
+
+}
+
+.form-register{
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  height: 30%;
+}
+
+input{
+  display: flex;
+  align-self: center;
+  height: 60%;
+}
+
+#account{
+  display: flex;
+  text-decoration: none;
+  color: rgb(245,245,220);
+  margin: 10px;
+  flex-grow: 1;
+  justify-content: center;
+  align-content: center;
+  margin: 5px
+}
+
+button{
+  background-color: rgb(150,165,60);
+  color: rgb(245,245,220);
+}
+
+buttons{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+
+</style>
