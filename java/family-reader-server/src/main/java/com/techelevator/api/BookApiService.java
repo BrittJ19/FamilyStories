@@ -30,8 +30,8 @@ public class BookApiService {
 
     public String addBook(String bookTitle, String author, String isbn) throws BasicLoggerException {
         Book addBook = new Book();
-        addBook.getBookTitle();
-        addBook.getAuthorName();
+        addBook.getTitle();
+        addBook.getAuthor();
         addBook.getIsbn();
 
         HttpHeaders headers = new HttpHeaders();
