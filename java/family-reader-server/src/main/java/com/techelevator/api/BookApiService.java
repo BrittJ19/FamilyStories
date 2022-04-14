@@ -28,27 +28,27 @@ public class BookApiService {
         return books;
     }
 
-    public String addBook(String bookTitle, String author, String isbn) throws BasicLoggerException {
-        Book addBook = new Book();
-        addBook.getTitle();
-        addBook.getAuthor();
-        addBook.getIsbn();
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setContentType(MediaType.APPLICATION_JSON);
-
-        HttpEntity<Book> entity = new HttpEntity<>(addBook, headers);
-
-        try {
-            String url = restTemplate.postForObject(API_BASE_URL + "/books", entity, String.class);
-            return url;
-        } catch (RestClientResponseException ex) {
-            BasicLogger.log("API Error: " + ex.getRawStatusCode() + " " + ex.getStatusText() +
-                    ((ex.getMessage() != null) ? " " + ex.getMessage() : " "));
-        } catch (ResourceAccessException ex) {
-            BasicLogger.log("API Error: " + ex.getMessage());
-        }
-        return null;
-    }
+//    public String addBook(String bookTitle, String author, String isbn) throws BasicLoggerException {
+//        Book addBook = new Book();
+//        addBook.getTitle();
+//        addBook.getAuthor();
+//        addBook.getIsbn();
+//
+//        HttpHeaders headers = new HttpHeaders();
+//        headers.setContentType(MediaType.APPLICATION_JSON);
+//
+//        HttpEntity<Book> entity = new HttpEntity<>(addBook, headers);
+//
+//        try {
+//            String url = restTemplate.postForObject(API_BASE_URL + "/books", entity, String.class);
+//            return url;
+//        } catch (RestClientResponseException ex) {
+//            BasicLogger.log("API Error: " + ex.getRawStatusCode() + " " + ex.getStatusText() +
+//                    ((ex.getMessage() != null) ? " " + ex.getMessage() : " "));
+//        } catch (ResourceAccessException ex) {
+//            BasicLogger.log("API Error: " + ex.getMessage());
+//        }
+//        return null;
+//    }
 
 }
