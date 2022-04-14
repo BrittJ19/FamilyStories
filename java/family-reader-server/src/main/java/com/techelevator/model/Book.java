@@ -24,31 +24,31 @@ public class Book {
         this.pagination = pagination;
     }
 
-<<<<<<< HEAD
-    public String getTitle() {
-        return title;
-=======
-    public String getBookTitle() {return bookTitle;
->>>>>>> bdbc371037267620262fc5a59bba7b713535c34e
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
-    }
-
-    public String getIsbn() {
-        return isbn;
-    }
-
-    public void setIsbn(String isbn) {
-        this.isbn = isbn;
-    }
+//<<<<<<< HEAD
+//    public String getTitle() {
+//        return title;
+//=======
+//    public String getBookTitle() {return bookTitle;
+//>>>>>>> bdbc371037267620262fc5a59bba7b713535c34e
+//    }
+//
+//    public void setTitle(String title) {
+//        this.title = title;
+//    }
+//
+//    public String getAuthor() {
+//        return author;
+//    }
+//
+//    public void setAuthor(String author) {
+//        this.author = author;
+//    }
+//
+//    public String getIsbn() {
+//        return isbn;
+//    }
+//
+//    public void setIsbn(String isbn) {
+//        this.isbn = isbn;
+//    }
 }
