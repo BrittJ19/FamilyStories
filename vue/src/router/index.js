@@ -11,6 +11,7 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
+import CheckActivity from '../views/CheckActivity.vue'
 
 Vue.use(Router)
 
@@ -65,9 +66,9 @@ const router = new Router({
       component: Family
     },
     {
-    path:"/family/newAccount",
-    name: "newAccount",
-    component: FamilyAccounts
+      path:"/family/newAccount",
+      name: "newAccount",
+      component: FamilyAccounts
     },
     {
       path:"/aboutus",
@@ -88,7 +89,13 @@ const router = new Router({
       path:"/troubleshoot",
       name:"troubleshoot",
       component: Troubleshoot
+    },
+    {
+      path:"/checkactivity",
+      name:"checkactivity",
+      component: CheckActivity
     }
+
 
   ]
 })
