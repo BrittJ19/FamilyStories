@@ -24,8 +24,12 @@ public class Book {
         this.pagination = pagination;
     }
 
+<<<<<<< HEAD
     public String getTitle() {
         return title;
+=======
+    public String getBookTitle() {return bookTitle;
+>>>>>>> bdbc371037267620262fc5a59bba7b713535c34e
     }
 
     public void setTitle(String title) {

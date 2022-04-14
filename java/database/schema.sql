@@ -36,6 +36,17 @@ CREATE TABLE family (
 	CONSTRAINT FK_account FOREIGN KEY (account_id) REFERENCES accounts(account_id)
 );
 
+CREATE TABLE books (
+	book_id serial,
+	user_id int NOT NULL,
+	author_name varchar(50) NOT NULL UNIQUE,
+	title varchar NOT NULL,
+	genre varchar NOT NULL,
+	isbn_id int NOT NULL,
+	CONSTRAINT PK_books PRIMARY KEY (book_id),
+	CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES user(user_id)
+);
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 
