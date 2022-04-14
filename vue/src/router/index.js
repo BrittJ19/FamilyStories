@@ -10,6 +10,7 @@ import FamilyAccounts from '../views/FamilyAccounts.vue'
 import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
+import Troubleshoot from '../views/Troubleshoot'
 
 Vue.use(Router)
 
@@ -82,6 +83,11 @@ const router = new Router({
       path:"/profile/:username",
       name:"userProfile",
       component: Profile
+    },
+    {
+      path:"/troubleshoot",
+      name:"troubleshoot",
+      component: Troubleshoot
     }
 
   ]
