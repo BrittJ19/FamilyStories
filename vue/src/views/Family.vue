@@ -1,13 +1,13 @@
 <template>
   <div class ="family">
-      <p>
-          <router-link v-bind:to="{ name: 'newAccount' }">Add a New Family Account</router-link>
-      </p>
+      <family-account-display/>
       </div>
 </template>
 
 <script>
+import FamilyAccountDisplay from '../components/FamilyAccountDisplay.vue'
 export default {
+  components: { FamilyAccountDisplay },
 
 }
 </script>

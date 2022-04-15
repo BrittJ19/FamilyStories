@@ -20,7 +20,10 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    users: []
+    users: [],
+    search: '',
+    family: [],
+    NewFamilyAccount: ''
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +44,15 @@ export default new Vuex.Store({
     },
     USERS_LIST(state, userList) {
       state.users = userList;
+    },
+    UPDATE_SEARCH(state, term) {
+      state.search = term;
+    },
+    SET_FAMILY_STATS(state, family) {
+      state.family = family;
+    },
+    SET_NEW_FAMILY(state, resp) {
+      state.NewFamilyAccount = resp;
     }
   }
 })

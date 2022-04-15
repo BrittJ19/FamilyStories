@@ -2,6 +2,7 @@ package com.techelevator.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -15,6 +16,33 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private int booksCompleted =0;
+   private int pagesRead =0;
+   private double moneyEarned = 0.0;
+
+   public int getBooksCompleted() {
+      return booksCompleted;
+   }
+
+   public void setBooksCompleted(int booksCompleted) {
+      this.booksCompleted = booksCompleted;
+   }
+
+   public int getPagesRead() {
+      return pagesRead;
+   }
+
+   public void setPagesRead(int pagesRead) {
+      this.pagesRead = pagesRead;
+   }
+
+   public double getMoneyEarned() {
+      return moneyEarned;
+   }
+
+   public void setMoneyEarned(double moneyEarned) {
+      this.moneyEarned = moneyEarned;
+   }
 
    public User() { }
 
