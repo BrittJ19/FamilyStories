@@ -1,34 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0">
-    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
-    <title>final-vue-capstone-seed</title>
-  </head>
-  <body>
-    <noscript>
-      <strong>We're sorry but final-vue-capstone-seed doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
-    </noscript>
-    <div id="app"></div>
-    <!-- built files will be auto injected -->
-    <main>
-      <div class = "container"><img id="logo" src="offWhiteLogo.png"></div>
+<template>
+ <main>
+    <div class = "container"><img id="logo" src="offWhiteLogo.png"></div>
   
     
-  <form class = "containerTwo" id = "menu">
+  <form class = "containerTwo" id = "menu" v-on:submit.prevent="addReadingActivity">
+    <div>
     <h2>Record Reading Activity</h2>
+    </div>
+    <div>
+      <label class = "form-element" for="reader" >Reader</label>
+      <input type="text" v-model="readingActivity.reader" id="reader" name="reader" placeholder= "Your name.."><br>
+    </div>
 
-    <label class = "inline" for="reader" >Reader</label>
-    <input type="text" id="reader" name="reader" placeholder= "Your name.."><br>
-  
-    <label  class = "inline" for="title">Title</label>
-    <input type="text" id="title" name="title" placeholder= "Book name.."><br>
-    
-  
-    <label class = "inline"  for="format">Format</label>
-    <select id="format" name="format">
+    <div>
+    <label  class = "form-element" for="title">Title</label>
+    <input type="text" v-model="readingActivity.title" id="title" name="title" placeholder= "Book name.."><br>
+    </div>
+
+    <div>
+    <label class = "form-element"  for="format">Format</label>
+    <select id="format" name="format" v-model="readingActivity.format">
     <option value="paper">Paper</option>
     <option value="digital">Digital</option>
     <option value="audioBook">Audio Book</option>
@@ -36,24 +27,38 @@
     <option value="readAloudListener">Read Aloud (Listener)</option>
     <option value="other">Other</option>
     </select><br>
-  
-    <label  class = "inline" for="page">Number of Pages Read</label>
-    <input type="number" id="page" name="page"><br>
-  
-    <label  class = "inline" for="minutes">Minutes Read</label>
-    <input type="number" id="minutes" name="minutes"><br>
-  
-    <label  class = "inline" for="notes">Notes</label>
-    <input type="text" id="notes" name="notes"><br>
-  
-    <button class = "inline"  type="submit" value= "submit">Add Activity</button> 
+    </div>
+
+     <div>
+    <label  class = "form-element" for="page">Number of Pages Read</label>
+    <input type="number" v-model.number="readingActivity.pages" id="page" name="page"><br>
+    </div>
+
+    <div>
+    <label  class = "form-element" for="minutes">Minutes Read</label>
+    <input type="number" v-model.number="readingActivity.minutes" id="minutes" name="minutes"><br>
+    </div>
+
+    <div>
+    <label  class = "form-element" for="notes">Notes</label>
+    <input type="text" v-model="readingActivity.notes" id="notes" name="notes"><br>
+    </div>
+
+    <div>
+    <button class = "actions"  type="submit" value= "submit">Add Activity</button> 
+    </div>
   </form>
 
   
   </main>
+</template>
 
-  </body>
-</html>
+<script>
+export default {
+
+}
+</script>
+
 <style>
 
   body{
