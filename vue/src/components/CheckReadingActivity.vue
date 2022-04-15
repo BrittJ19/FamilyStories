@@ -37,7 +37,7 @@ export default {
 table {
   font-family: Arial, Helvetica, sans-serif;
   border-color: 10px, rgb(150,165,60);
-  margin: 25px;
+  margin: 10px;
 
 }
 th {
