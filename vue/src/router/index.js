@@ -11,9 +11,14 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
+<<<<<<< HEAD
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
+=======
+import FindFriendsForm from '../views/Friends'
+import CheckActivity from '../views/CheckActivity.vue'
+>>>>>>> 7f88d06805f400cb78d60c1ef914cc783c54746c
 
 Vue.use(Router)
 
@@ -68,9 +73,9 @@ const router = new Router({
       component: Family
     },
     {
-    path:"/family/newAccount",
-    name: "newAccount",
-    component: FamilyAccounts
+      path:"/family/newAccount",
+      name: "newAccount",
+      component: FamilyAccounts
     },
     {
       path:"/aboutus",
@@ -93,6 +98,7 @@ const router = new Router({
       component: Troubleshoot
     },
     {
+<<<<<<< HEAD
       path:"/familyAccountList",
       name:"familyAccountList",
       component: FamilyAccountList
@@ -106,6 +112,16 @@ const router = new Router({
       path:"/family/addUser",
       name: "addUser",
       component: addUser
+=======
+      path:"/friends",
+      name:"friends",
+      component: FindFriendsForm
+    },
+
+     { path:"/checkactivity",
+      name:"checkactivity",
+      component: CheckActivity
+>>>>>>> 7f88d06805f400cb78d60c1ef914cc783c54746c
     }
 
 
