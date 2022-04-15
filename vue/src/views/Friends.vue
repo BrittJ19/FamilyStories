@@ -31,7 +31,7 @@ addFriends(){
 }
 </script>
 
-<style>
+<style scoped>
 
 @import url('http://fonts.cdnfonts.com/css/abeatbykai');
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Montserrat+Alternates:wght@100&display=swap');

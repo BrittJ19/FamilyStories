@@ -17,6 +17,7 @@ import addUser from '../components/AddUser'
 import FindFriendsForm from '../views/Friends'
 import CheckActivity from '../views/CheckActivity.vue'
 
+
 Vue.use(Router)
 
 /**
@@ -95,6 +96,7 @@ const router = new Router({
       component: Troubleshoot
     },
     {
+
       path:"/familyAccountList",
       name:"familyAccountList",
       component: FamilyAccountList
