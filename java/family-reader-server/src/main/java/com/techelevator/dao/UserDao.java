@@ -10,9 +10,15 @@ public interface UserDao {
 
     User getUserById(Long userId);
 
+    List<String> getUsernameList();
+
+//    List<String> getUsernameList(int userId);
+
     User findByUsername(String username);
 
     int findIdByUsername(String username);
 
     boolean create(String username, String password, String role);
+
+    List<String> searchUsers(String searchTerm);
 }

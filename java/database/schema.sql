@@ -1,5 +1,9 @@
 BEGIN TRANSACTION;
 
+DROP TABLE IF EXISTS family;
+DROP TABLE IF EXISTS users_books;
+DROP TABLE IF EXISTS book;
+DROP TABLE IF EXISTS accounts;
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
 
@@ -15,6 +19,9 @@ CREATE TABLE users (
 	username varchar(50) NOT NULL UNIQUE,
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
+	books_completed int,
+	pages_read int,
+	money_earned float,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -30,21 +37,33 @@ CREATE TABLE accounts (
 CREATE TABLE family (
 	family_id serial,
 	family_name varchar(50) NOT NULL UNIQUE,
-	family_accounts text[] NOT NULL,
-	account_id int NOT NULL,
-	CONSTRAINT PK_family PRIMARY KEY (family_id),
-	CONSTRAINT FK_account FOREIGN KEY (account_id) REFERENCES accounts(account_id)
+	books_completed int,
+	pages_read int,
+	money_earned float,
+	CONSTRAINT PK_family PRIMARY KEY (family_id)
+);
+
+CREATE TABLE users_famiLy (
+	family_id int NOT NULL,
+	user_id int NOT NULL,
+	CONSTRAINT FK_family FOREIGN KEY (family_id) REFERENCES family(family_id),
+	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 CREATE TABLE books (
 	book_id serial,
-	user_id int NOT NULL,
 	author_name varchar(50) NOT NULL UNIQUE,
 	title varchar NOT NULL,
 	genre varchar NOT NULL,
 	isbn_id int NOT NULL,
-	CONSTRAINT PK_books PRIMARY KEY (book_id),
-	CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES user(user_id)
+	CONSTRAINT PK_books PRIMARY KEY (book_id)
+);
+
+CREATE TABLE users_books (
+	book_id int NOT NULL,
+	user_id int NOT NULL,
+	CONSTRAINT FK_books FOREIGN KEY (book_id) REFERENCES books(book_id),
+	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');

@@ -1,12 +1,37 @@
 package com.techelevator.model;
 
-import java.util.List;
+import java.math.BigDecimal;
 
 public class Family {
     private int familyId;
     private String familyName;
-    private List<User> familyUsers;
-    private int accountId;
+    private int booksCompleted = 0;
+    private int pagesRead = 0;
+    private double moneyEarned = 0.0;
+
+    public int getBooksCompleted() {
+        return booksCompleted;
+    }
+
+    public void setBooksCompleted(int booksCompleted) {
+        this.booksCompleted = booksCompleted;
+    }
+
+    public int getPagesRead() {
+        return pagesRead;
+    }
+
+    public void setPagesRead(int pagesRead) {
+        this.pagesRead = pagesRead;
+    }
+
+    public double getMoneyEarned() {
+        return moneyEarned;
+    }
+
+    public void setMoneyEarned(double moneyEarned) {
+        this.moneyEarned = moneyEarned;
+    }
 
     public String getFamilyName() {
         return familyName;
@@ -14,14 +39,6 @@ public class Family {
 
     public void setFamilyName(String familyName) {
         this.familyName = familyName;
-    }
-
-    public List<User> getFamilyUsers() {
-        return familyUsers;
-    }
-
-    public void setFamilyUsers(List<User> familyUsers) {
-        this.familyUsers = familyUsers;
     }
 
     public int getFamilyId() {
@@ -32,11 +49,4 @@ public class Family {
         this.familyId = familyId;
     }
 
-    public int getAccountId() {
-        return accountId;
-    }
-
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
-    }
 }
