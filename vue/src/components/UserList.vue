@@ -1,7 +1,7 @@
 <template>
     <div>
         <label for="serch-term">Search: </label>
-        <input type="text" id="search-term" v-model="searchTerm" @keyup="updateSearch"/>
+        <input type="text" id="serch-term" v-model="searchTerm" @keyup="updateSearch"/>
     </div>
 </template>
 

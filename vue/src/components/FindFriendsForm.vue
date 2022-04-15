@@ -4,8 +4,26 @@
     <head>
     <h2>Find Friends</h2>
     </head>
-    <form>
+      <form v-on:submit.prevent="addToFamily">
+          <div id="searchBox" class="form-element">
+              <label for="account-name"> Search user by username : </label>
+              <input id="name-text" type="text" v-model="text"/>
+              <p>Type all or part of username.</p>
+          </div>    
 
+          <!-- <div class="form-element">
+              <label for="account-type"> Account Type:</label>
+                  <select id="selections">
+                      <option value="parent">Parent</option>
+                      <option value="child">Child</option>
+                  </select>
+          </div>  -->
+          <div id="search" class="form-element">
+              <button id="searchButton" v-on:click="searchForUsers">Search Users to Add</button>
+              <select name="results" id="results" v-if="isSearching">
+                <option value="username" v-for="user in searchResults" v-bind:key="user.username">{{user}}</option>
+              </select>
+          </div> 
     </form>
 </div>
   
@@ -13,10 +31,68 @@
 
 
 <script>
+import databaseService from '../services/DatabaseService'
 export default {
-    name:"find_friends"
+    name:"find_friends",
 
-}
+},
+methods: {
+            updateSearchFilter() {
+                this.$store.commit('UPDATE_SEARCH', this.searchTerm);
+            };
+            searchForUsers() {
+                this.isLoading = true;
+                this.search = this.text;
+                databaseService.getSearchResults(this.search).then( resp => {
+                this.searchResults = resp.data;    
+                this.isLoading = false;
+                this.isSearching = true;
+                console.log(resp.data);
+                })
+                if (this.searchResults.length > 0) {
+                    this.searchMessage = "Select User from Dropdown";
+                }else {
+                    this.searchMessage = "No users found."
+                };
+            },
+            selectAccount() {
+                var account = document.getElementById("accountNames").value;
+                this.familyAccount.familyName = account;
+            },
+
+            selectUser() {
+                var user = document.getElementById("results").value;
+                this.familyAccount.username = user;
+            },
+            addToFriends() {
+                var selectedUser = document.getElementById('results');
+                var userValue = selectedUser.options[selectedUser.selectedIndex].text;
+                this.familyAccount.username = userValue;
+                var selectAccount = document.getElementById('accountNames');
+                var accountValue = selectAccount.options[selectAccount.selectedIndex].text;
+                this.familyAccount.familyName = accountValue;
+                databaseService.addMemberToFamily(this.familyAccount).then( resp => {
+                    if(resp.status == 200){
+                        this.memberAdded = true;
+                    }else {
+                        this.memberAdded = false;
+                    }
+                })
+            }
+            
+        },
+        computed: {
+    filteredUsers() {
+      return this.users.filter(u => {
+        // return true if the product should be visible
+
+        // in this example we just check if the search string
+        // is a substring of the product name (case insensitive)
+        return u.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
+      });
+        },
+    }
+    
 </script>
 
 <style scoped>
