@@ -34,12 +34,10 @@
 import databaseService from '../services/DatabaseService'
 export default {
     name:"find_friends",
-
-},
 methods: {
             updateSearchFilter() {
                 this.$store.commit('UPDATE_SEARCH', this.searchTerm);
-            };
+            },
             searchForUsers() {
                 this.isLoading = true;
                 this.search = this.text;
@@ -53,7 +51,7 @@ methods: {
                     this.searchMessage = "Select User from Dropdown";
                 }else {
                     this.searchMessage = "No users found."
-                };
+                }
             },
             selectAccount() {
                 var account = document.getElementById("accountNames").value;
@@ -90,8 +88,9 @@ methods: {
         // is a substring of the product name (case insensitive)
         return u.toLowerCase().indexOf(this.search.toLowerCase()) != -1;
       });
-        },
+        }
     }
+}
     
 </script>
 
