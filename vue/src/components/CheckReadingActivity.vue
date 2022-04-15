@@ -34,9 +34,10 @@ export default {
 </script>
 
 <style scoped>
+
 table {
   font-family: Arial, Helvetica, sans-serif;
-  border-color: 10px, rgb(150,165,60);
+  border-color: 10px, solid, rgb(150,165,60);
   margin: 10px;
 
 }
