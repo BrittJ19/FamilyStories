@@ -6,24 +6,32 @@
       </nav>
       <div id="menu">
           <ul id="menu-items">
-              <router-link id="family" v-bind:to="{ name: 'userProfile' }"><li>Back To Profile</li></router-link>
-              <li>Add a Book</li>
-              <li>Log Reading</li>
-              <li>Reading Activity</li>
-              <li>Prizes</li>
-              <li>Friends</li>
+              <router-link id="family" v-bind:to="{ name: 'userProfile' }"><li>Back To Profile <i id="b" class="fa-solid fa-arrow-left-long"></i></li></router-link>
+              <li>Add a Book <i id="b" class="fa-solid fa-book-bookmark"></i> </li>
+              <li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li>
+              <li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li>
+              <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
+              <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
           </ul>
       </div>
       <main>
           <div id="name">
+
               <h1>Family Members</h1>
                <table>
           <thead>
               <th>Username</th>
+              <th>Family</th>
+              <th>Books Read</th>
+              <th>Pages Read</th>
+              <th>Charity Money Earned</th>
           </thead>
           <tbody>
-              <tr v-for="family in familyMembers" v-bind:key="family.familyId">
-                  <td id="usernames">{{ family }}</td>
+              <tr v-for="member in familyMembers" v-bind:key="member.username">
+                  <td id="familyName">{{ family.familyName }}</td>
+                  <td id="books">{{family.booksCompleted}}</td>
+                  <td id="pages">{{family.pagesRead}}</td>
+                  <td id="money">$ {{family.moneyEarned}}</td>
                 </tr>
           </tbody>
       </table>
@@ -38,26 +46,32 @@
 </template>
 
 <script>
-import FamilyAccountList from '../components/FamilyAccountList.vue';
+// import FamilyAccountList from '../components/FamilyAccountList.vue';
 import databaseService from '../services/DatabaseService'
 export default {
-  components: { FamilyAccountList },
+//   components: { FamilyAccountList },
    data() {
         return {
+            familyInfo:{
+                familyName: '',
+                userId: this.$store.state.user.id
+            },
             familyAccounts: [],
             familyMembers: [],
+            memberStats: [],
             isLoading: ''
         };
     },
     created() {
         this.isLoading = true;
-        databaseService.getFamilyAccounts(this.$store.state.user.id).then(response => {
+        databaseService.getFamilyAccounts(this.userId).then((response) => {
             this.familyAccounts = response.data;
             console.log(response.data)
+            console.log(this.familyAccounts.familyId)
         })
         this.familyAccounts.forEach( account => {
-        databaseService.getFamilyMembers(this.$store.state.user.id, account).then( response => {
-            this.familyMembers.concat(response.data)
+        databaseService.getUserByFamily(account.familyId).then( (response) => {
+            this.familyMembers.add(response.data)
             this.isLoading = false;
             console.log(this.familyMembers)
         });
@@ -69,7 +83,9 @@ export default {
 
 <style>
 
-
+#b{
+    font-size: 25px;
+}
 .container{
     display: grid;
 
@@ -117,9 +133,13 @@ main{
 
 #name{
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center ;
+    align-items: center;
     color: rgb(245,245,220);
     font-family: 'abeatbyKai', sans-serif;
+    /* margin-left: 10px; */
 }
 
 #family{
@@ -191,8 +211,10 @@ h1{
 
 #list{
     display: flex;
-    margin-left: 250px;
+    flex-grow: 1;
+    /* margin-left: 250px; */
     color: rgb(245,245,220);
+    width: 100%
 }
 
 
@@ -210,5 +232,23 @@ h1{
    align-self: center;
   color: rgb(245,245,220);
   filter: opacity(0.5) drop-shadow(0,0,0 rgb(150,165,60));
+ }
+ table{
+     display: flex;
+     flex-grow: 1;
+     width: 100vh;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+ }
+ tbody{
+     display: flex;
+     flex-grow: 1;
+     justify-content: space-between;
+     align-content: space-between;
+ }
+ thead{
+     display: flex;
+     flex-grow: 1;
  }
 </style>

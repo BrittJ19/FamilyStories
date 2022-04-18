@@ -37,6 +37,9 @@ button{
     background-color: rgb(255,117,24);
     font-family: 'abeatbyKai', sans-serif;
     margin: 10px;
+    margin-right: 0px;
+    padding: 10px;
+    color: rgb(245,245,220);
 }
 
 </style>

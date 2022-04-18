@@ -131,6 +131,7 @@ public class JdbcFamilyDao implements FamilyDao{
         user.setId(rowSet.getLong("user_id"));
         user.setUsername(rowSet.getString("username"));
         user.setPassword(rowSet.getString("password_hash"));
+        user.setAcccountType(rowSet.getString("account_type"));
         return user;
     }
 

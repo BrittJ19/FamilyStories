@@ -28,6 +28,7 @@
           <div class="actions">
               <button type="submit">Create Family Account</button>
           </div>
+          <router-link v-bind:to="{ name: 'family' }"><button id="back">Back</button></router-link>
           <h1>{{message}}</h1>
       </form>
       </div>
@@ -62,7 +63,7 @@ export default {
                 if (resp.status == 200) {
                 this.$store.commit('SET_NEW_FAMILY', resp.data);
                 this.isLoading = false;
-                this.message = "New Family Account has been created!"
+                this.message = "Your new Family Account has been created!"
             } else {
                 this.message = "Family Account not created. Family account name may already be in use."
                 this.isLoading = false;
@@ -110,6 +111,12 @@ h1{
     flex-grow: 1;
     flex: 1 0 auto;
   
+}
+#back{
+    display: flex;
+    margin-left: 490px;
+    width: 175px;
+    text-decoration: none;
 }
 
 #banner{
