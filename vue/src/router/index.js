@@ -11,6 +11,7 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
+import MyBook from '../views/MyBook'
 
 Vue.use(Router)
 
@@ -88,6 +89,11 @@ const router = new Router({
       path:"/troubleshoot",
       name:"troubleshoot",
       component: Troubleshoot
+    },
+    {
+      path:"/mybooks",
+      name:"myBooks",
+      component: MyBook
     }
 
   ]
