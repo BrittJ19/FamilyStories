@@ -67,7 +67,7 @@
   </div>
   </div>
    <div id="promo">
-      <p>JOIN TODAY AND GET AN EXTRA $5 FOR CHARITY UPON COMPLETING 500 PAGES!</p>
+      <router-link id="link" :to="{ name: 'register' }"><p>JOIN TODAY AND GET AN EXTRA $5 FOR CHARITY UPON COMPLETING 500 PAGES!</p></router-link>
       </div> 
   </div>
   <img id="familyReading" src="/family2.jpg">
@@ -142,6 +142,10 @@ input{
   border: 4px solid rgb(150,165,60);
   padding: 10px
 }
+#link{
+   text-decoration: none;
+   color: rgb(245,245,220);
+ }
 #account{
   display: flex;
   flex-grow: 1;
@@ -192,13 +196,18 @@ input{
   /* display: flex; */
   border-radius: 7%;
   height: 100%;
-  justify-content: flex-start;
-  justify-self: flex-start;
   font-size: 15px;
   font-family: 'abeatbyKai', sans-serif;
-  margin-left: 5px;
-  padding: 20px
-  /* padding: 12px; */
+  /* margin-left: 5px; */
+  margin-bottom: 40px;
+  padding: 10px;
+  margin: 10px;
+}
+
+#submit:hover{
+  height: 55px;
+  width: 180px;
+  border: 2px solid rgb(255,196,12);
 }
 
 
@@ -210,6 +219,7 @@ input{
 #nav{
   display: flex;
   background-color: rgb(255,117,24);
+  padding-bottom: 15px;
   /* width: 100%; */
 }
 
@@ -230,12 +240,18 @@ input{
 
 .form-register{
   display: flex;
+  /* flex-wrap: wrap; */
   align-items: stretch;
   justify-content: center;
   align-content: center;
   align-self: center;
   height: 40px;
   margin-bottom: 30px;
+  margin-top: 0%;
+}
+
+#submit-button{
+  align-self: center;
 }
 
 /* .sr-only{
@@ -351,17 +367,29 @@ align-content: space-between;
 
 .form-register{
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-content: center;
   align-self: center;
+  width: 100%;
   height: 30%;
 }
 
-input{
+/* input{
   display: flex;
   align-self: center;
   height: 60%;
-  border-radius: 5%
+} */
+
+input{
+  border: 4px solid rgb(150,165,60);
+  border-radius: 5%;
+  height: 20pxpx;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  width: 115px;
+  margin-right: 20px;
 }
 
 #account{

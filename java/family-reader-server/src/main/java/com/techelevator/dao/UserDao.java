@@ -16,9 +16,11 @@ public interface UserDao {
 
     User findByUsername(String username);
 
-    int findIdByUsername(String username);
+    Integer findIdByUsername(String username);
 
     boolean create(String username, String password, String role);
 
     List<String> searchUsers(String searchTerm);
+
+    List<User> getUserByFamilyId(int familyId);
 }

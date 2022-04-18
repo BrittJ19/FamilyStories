@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -16,6 +16,8 @@ import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
 import FindFriendsForm from '../views/Friends'
 import CheckActivity from '../views/CheckActivity.vue'
+import createAccount from '../views/CreateAccount.vue'
+import BookSlider from '../components/BookSlider.vue'
 
 
 Vue.use(Router)
@@ -36,7 +38,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: Login,
       meta: {
         requiresAuth: true
       }
@@ -120,6 +122,16 @@ const router = new Router({
      { path:"/checkactivity",
       name:"checkactivity",
       component: CheckActivity
+    },
+    {
+      path:"/account/create",
+      name: "createAccount",
+      component: createAccount
+    },
+    {
+    path:"/books/favorites",
+    name: "favoriteBooks",
+    component: BookSlider
     }
 
 

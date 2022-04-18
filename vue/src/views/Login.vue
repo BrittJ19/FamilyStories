@@ -35,6 +35,11 @@
         role="alert"
         v-if="this.$route.query.registration"
       >Thank you for registering, please sign in.</div>
+      <div
+      class="alert alert-creation"
+      role="alert"
+      v-if="this.$route.query.creation"
+      >Thank you for registering, use the search to add new user to family account.</div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -66,7 +71,7 @@
   </div>
  </div>
   <div id="promo">
-      <p>JOIN TODAY AND GET AN EXTRA $5 FOR CHARITY UPON COMPLETING 500 PAGES!</p>
+      <router-link id="link" :to="{ name: 'register' }"><p>JOIN TODAY AND GET AN EXTRA $5 FOR CHARITY UPON COMPLETING 500 PAGES!</p></router-link>
       </div> 
   </div>
   <img id="familyReading" src="/family2.jpg">
@@ -123,8 +128,9 @@ export default {
 }
 
 #submit-button{
-  width: 100%;
-  margin-left: 5px;
+  margin-top: 0px;
+  /* width: 100%; */
+  margin-left: 5x;
 }
 
 #promo{
@@ -133,9 +139,13 @@ export default {
    background-color: rgb(150,165,60);
    justify-self: center;
    justify-content: center;
-   color: rgb(245,245,220);
    font-family: 'abeatbyKai', sans-serif;
    margin-top: 10px;
+ }
+
+ #link{
+   text-decoration: none;
+   color: rgb(245,245,220);
  }
 
 #submit{
@@ -150,13 +160,19 @@ export default {
   font-size: 15px;
   font-family: 'abeatbyKai', sans-serif;
   color: rgb(245,245,220);
-  padding: 10px;
+  padding: 12px;
   border-radius: 10%;
   /* padding: 20px;
   color: rgb(245,245,220);
   margin-right: 5px; */
   padding-right: 18px;
   padding-left: 18px;
+}
+
+#submit:hover{
+  height: 55px;
+  width: 100px;
+  border: 2px solid rgb(255,196,12);
 }
 
 #troubleshoot{
@@ -229,12 +245,14 @@ export default {
 
 .form-signin{
   display: flex;
-  align-items: stretch;
+  align-items: stretch; 
+  flex-wrap: wrap;
   justify-content: center;
   align-content: center;
   align-self: center;
   height: 40px;
   margin-bottom: 30px;
+
 }
 
 .sr-only{
@@ -243,7 +261,7 @@ export default {
 
 #login{
   display: flex;
-  flex-direction: column;
+   flex-direction: column; 
   /* flex-grow: 1; */
   justify-content: flex-end;
   align-content: flex-end;
@@ -270,7 +288,13 @@ border-radius: 10px;
 
 input{
   border: 4px solid rgb(150,165,60);
-  border-radius: 5%
+  border-radius: 5%;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+  margin-right: 10px;
 }
 
 #catchphrase{
@@ -355,6 +379,14 @@ input{
 #charities:hover{
   font-size: 25px;
 }
+
+/* input{
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-self: center;
+} */
 
 /* 
 #familyReading{

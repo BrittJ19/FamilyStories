@@ -22,6 +22,7 @@ CREATE TABLE users (
 	books_completed int,
 	pages_read int,
 	money_earned float,
+	account_type varchar (50),
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
 
@@ -64,6 +65,10 @@ CREATE TABLE users_books (
 	user_id int NOT NULL,
 	CONSTRAINT FK_books FOREIGN KEY (book_id) REFERENCES books(book_id),
 	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
+);
+
+CREATE TABLE profile (
+	favorite_books varchar(50)
 );
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');

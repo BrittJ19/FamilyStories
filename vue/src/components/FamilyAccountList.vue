@@ -51,7 +51,9 @@ export default {
 #options{
     display: flex;
     flex-direction: row;
-    margin-left: 75px;
+    /* margin-left: 75px; */
+    justify-content: center;
+
 }
 #new{
     padding: 10px;
@@ -65,43 +67,75 @@ div{
 }
 table{
     display: flex;
+    flex-grow: 1;
+    width: 100%;
+    justify-content: space-between;
+    align-content: space-between;
+    margin: 0px
+
+    /* margin-right: 95px */
+    /* display: flex;
     flex-direction: column;
     align-content: center;
     align-self: center;
-    height: 30%;
+    height: 30%; */
     /* width: 100vh; */
-    font-size: 20px;
+    /* font-size: 20px; */
 
 }
+
 tr{
-    display: flex;
-    align-content: stretch;
-    width: 100vh;
-    /* height: 100vh; */
-    
-}
+    /* border: 4px solid rgb(255,196,12) */
+/* display: flex;
+width: 100vh;
+justify-content: space-between; */
 
+/* height: 100vh; */
+
+}
+table, td {
+  border: 2px solid rgb(255,196,12);
+}
 th{
-    padding: 20px;
+    margin-left: 0;
+}
+thead{
+    width: 100vh;
+    justify-content: space-between;
+    align-content: space-between;
 }
 td{
-    display: flex;
-    padding:20px;
+    width: 100vh;
+    justify-content: space-between;
+    align-content: space-between;
 }
+/* th{
+    border: 4px solid rgb(255,196,12)
+    /* padding: 20px; 
+} 
+td{
+    border: 4px solid rgb(255,196,12)
+    /* display: flex; */
+    /* padding: 20px; */
 
-#books{
-    padding-right: 100px;
-    padding-left: 40px;
-    font-size: 20px
+
+#familyName{
+    /* margin-left: 10px */
 }
-#pages{
+/* #pages{
     padding-right: 140px
-}
+} */
 #money{
 
 }
 #familyName{
     font-family: 'abeatbyKai', sans-serif;
+}
+img{
+    margin-right: 250px
+}
+#update{
+    padding: 10px
 }
 
 

@@ -20,6 +20,16 @@ public class User {
    private int pagesRead =0;
    private double moneyEarned = 0.0;
 
+   public String getAcccountType() {
+      return acccountType;
+   }
+
+   public void setAcccountType(String acccountType) {
+      this.acccountType = acccountType;
+   }
+
+   private String acccountType = "parent";
+
    public int getBooksCompleted() {
       return booksCompleted;
    }

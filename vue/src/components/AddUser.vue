@@ -9,10 +9,11 @@
       <div id="accountForm">
       <div id="main">    
       <h1>Add User to Family</h1>
-      <form v-on:submit.prevent="addToFamily">
+      <form v-on:submit.prevent="searchForUsers">
+          <!-- v-on:submit.prevent="addToFamily" -->
           <div id="searchBox" class="form-element">
-              <label for="account-name"> Search user by username : </label>
-              <input id="name-text" type="text" v-model="text"/>
+              <label id="account-name" for="account-name"> Search user by username : </label>
+              <input id="name-text" type="search" v-model="text"/>
               <p>Type all or part of username.</p>
           </div>    
 
@@ -24,21 +25,29 @@
                   </select>
           </div>  -->
           <div id="search" class="form-element">
-              <button id="searchButton" v-on:click="searchForUsers">Search Users to Add</button>
-              <select name="results" id="results" v-if="isSearching">
+              <button id="searchButton">Search Users to Add</button>
+              <select name="results" id="results" v-on:change="saveUserSelection()" v-if="isSearching">
+                  <option disabled selected value>-- select an option --</option>
                 <option value="username" v-for="user in searchResults" v-bind:key="user.username">{{user}}</option>
               </select>
           </div> 
           <p>Select Family name to add member</p>
-          <select name="results" id="accountNames">
+          <!-- <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
+<label for="vehicle1"> I have a bike</label><br> -->
+
+          <select name="results" id="accountNames" v-on:change="saveAccountSelection()">
+              <option disabled selected value>-- select an option --</option>
                 <option value="username" v-for="account in familyAccounts" v-bind:key="account.family_id">{{account.familyName}}</option>
               </select>
-          <div class="actions">
-              <button id="newUser">Create New User</button>
-              <button id="submit" type="submit">Add User to Family</button>
+              <div class ="newUser">
+              <router-link to="/account/create"><button id="newUser">Create New User</button></router-link>
+              </div>
+          <div class="act">
+              <button id="submit" @click="addToFamily()">Add User to Family</button>
           </div>
           <!-- <h1>{{message}}</h1> -->
       </form>
+       <router-link v-bind:to="{ name: 'family' }"><button id="back">Back</button></router-link>
       </div>
       </div>
   </div>
@@ -52,7 +61,8 @@ export default {
         return {
             familyAccount: {
                 familyName: '',
-                username: '',
+                userId: '',
+
             },
             newUser: {
 
@@ -67,7 +77,8 @@ export default {
             searchMessage:"",
             isSearching: false,
             familyAccounts: [],
-            memberAdded: ''
+            memberAdded: '',
+            username: ''
 
         }
     },
@@ -123,14 +134,34 @@ export default {
             //     var user = document.getElementById("results").value;
             //     this.familyAccount.username = user;
             // },
-            addToFamily() {
+            saveUserSelection() {
                 var selectedUser = document.getElementById('results');
                 var userValue = selectedUser.options[selectedUser.selectedIndex].text;
-                this.familyAccount.username = userValue;
+                alert(userValue);
+                this.username = userValue;
+                console.log(userValue);
+                 databaseService.getUserByUsername(this.username).then(resp => {
+                    this.familyAccount.userId = resp.data;
+                    console.log(resp)
+                })
+
+            },
+            saveAccountSelection () {
                 var selectAccount = document.getElementById('accountNames');
                 var accountValue = selectAccount.options[selectAccount.selectedIndex].text;
+                alert(accountValue);
                 this.familyAccount.familyName = accountValue;
-                databaseService.addMemberToFamily(this.familyAccount).then( resp => {
+                console.log(accountValue)
+
+            },
+            addToFamily() {
+                 const userFamily = {
+                familyName: this.familyAccount.familyName,
+                userId: this.familyAccount.userId
+            };
+                console.log(userFamily);
+                databaseService.addMemberToFamily(userFamily).then( resp => {
+                    console.log(resp.statusText)
                     if(resp.status == 200){
                         this.memberAdded = true;
                     }else {
@@ -157,6 +188,14 @@ export default {
 </script>
 
 <style scoped>
+#back{
+    display: flex;
+    margin-left: 468px;
+    margin-top: 10px;
+    width: 200px;
+    text-decoration: none;
+}
+
 
 #name-text{
     height: 30px
@@ -179,23 +218,35 @@ p{
     font-family: 'abeatbyKai', sans-serif;
     color: rgb(245,245,220);
     align-self: center;
+    margin: 5px;
+    font-size: 20px;
+}
+#account-name{
+    margin-left: 35px;
+    font-size: 20px
 }
 
 .form-element{
     padding: 10px;
+    margin: 0px
 }
 
 #submit{
     margin-top: 50px;
     width: 200px;
-    margin-top: 200px
+    margin: 0px;
+    margin-left: 462px
+    /* margin-top: 200px; */
 }
 
 #newUser{
     margin-top: 0px;
     width: 200px;
-    margin: 40px
+    margin: 20px;
+    margin-left: 463px;
+    text-decoration: none;
 }
+    
 
 .actions{
     display: flex;
@@ -207,8 +258,8 @@ p{
 #results{
     width: 25%;
     align-self: center;
-    height: 40px
-
+    height: 40px;
+    margin: 0px
 }
 #accountNames{
     width: 25%;
@@ -225,7 +276,7 @@ p{
 form{
     display: flex;
     flex-direction: column;
-    padding: 50px
+    padding: 5px
 }
 body{
     background-color: rgb(245,245,220);
@@ -244,6 +295,7 @@ h1{
     justify-content: center;
     color:rgb(245,245,220);
     font-family: 'abeatbyKai', sans-serif;
+    margin-left: 120px
 }
 
 #page{
@@ -297,7 +349,7 @@ button{
     justify-content: center;
     align-content: center;
     align-self: center;
-    margin: 20px;
+    margin: 5px;
     background-color: rgb(255,117,24);
     padding: 10px
 }
@@ -305,7 +357,7 @@ button{
 .actions{
     display: flex;
     justify-content: center;
-    height: 100px;
+    height: 0px
 }
 
 </style>

@@ -32,6 +32,17 @@ export default{
 
     addMemberToFamily(userFamily) {
         return database.post('/family/addMember', userFamily);
+    },
+
+    getCurrentUser(userId) {
+        return database.get(`/user/${userId}`)
+    },
+
+    getUserByUsername(username) {
+        return database.get(`/user/find=${username}`)
+    },
+    getUserByFamily(familyId) {
+        return database.get(`/user/family/${familyId}`)
     }
 
 

@@ -25,7 +25,7 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public int findIdByUsername(String username) {
+    public Integer findIdByUsername(String username) {
         if(username == null) throw new IllegalArgumentException("Username cannot be null");
 
         Integer userId = null;
@@ -52,6 +52,19 @@ public class JdbcUserDao implements UserDao {
 			throw new UserNotFoundException();
 		}
 	}
+
+    @Override
+    public List<User> getUserByFamilyId(int familyId) {
+        List<User> famMembers = new ArrayList<>();
+        String sql = "SELECT * FROM users u JOIN users_family uf ON u.user_id = uf.user_id WHERE family_id = ?";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
+        while(results.next()) {
+            User user = mapRowToUser(results);
+            famMembers.add(user);
+        }
+
+        return famMembers;
+    }
 
     @Override
     public List<User> findAll() {
@@ -92,6 +105,7 @@ public class JdbcUserDao implements UserDao {
         throw new UsernameNotFoundException("User " + username + " was not found.");
     }
 
+
     @Override
     public boolean create(String username, String password, String role) {
         boolean userCreated = false;
@@ -130,6 +144,8 @@ public class JdbcUserDao implements UserDao {
         return results;
     }
 
+
+
 //    private User mapRowToUserTable(SqlRowSet rowset) {
 //        User user = new User();
 //        user.setId(rowset.getLong("user_id"));
@@ -147,6 +163,7 @@ public class JdbcUserDao implements UserDao {
         user.setBooksCompleted(rs.getInt("books_completed"));
         user.setPagesRead(rs.getInt("pages_read"));
         user.setMoneyEarned(rs.getDouble("money_earned"));
+        user.setAcccountType(rs.getString("account_type"));
         return user;
     }
 }
