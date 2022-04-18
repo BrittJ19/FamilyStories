@@ -118,8 +118,8 @@ const router = new Router({
       name:"friends",
       component: FindFriendsForm
     },
-
-     { path:"/checkactivity",
+    { 
+      path:"/checkactivity",
       name:"checkactivity",
       component: CheckActivity
     },

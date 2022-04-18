@@ -59,7 +59,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
   body{
     background-image: url('shutterstock_1690275997.jpg');
