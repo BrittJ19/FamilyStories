@@ -12,6 +12,12 @@ import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
 import MyBook from '../views/MyBook'
+import FamilyAccountList from '../components/FamilyAccountList.vue'
+import loading from '../components/loading.vue'
+import addUser from '../components/AddUser'
+import FindFriendsForm from '../views/Friends'
+import CheckActivity from '../views/CheckActivity.vue'
+
 
 Vue.use(Router)
 
@@ -66,9 +72,9 @@ const router = new Router({
       component: Family
     },
     {
-    path:"/family/newAccount",
-    name: "newAccount",
-    component: FamilyAccounts
+      path:"/family/newAccount",
+      name: "newAccount",
+      component: FamilyAccounts
     },
     {
       path:"/aboutus",
@@ -81,7 +87,7 @@ const router = new Router({
       component: Charities
     },
     {
-      path:"/profile/:username",
+      path:"/profile",
       name:"userProfile",
       component: Profile
     },
@@ -94,7 +100,34 @@ const router = new Router({
       path:"/mybooks",
       name:"myBooks",
       component: MyBook
+    },
+    {
+
+      path:"/familyAccountList",
+      name:"familyAccountList",
+      component: FamilyAccountList
+    },
+    {
+      path:"/loading",
+      name: "loading",
+      component: loading
+    },
+    {
+      path:"/family/addUser",
+      name: "addUser",
+      component: addUser
+    },
+    {
+      path:"/friends",
+      name:"friends",
+      component: FindFriendsForm
+    },
+    { 
+      path:"/checkactivity",
+      name:"checkactivity",
+      component: CheckActivity
     }
+
 
   ]
 })

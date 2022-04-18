@@ -68,6 +68,19 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public List<String> getUsernameList() {
+        List<String> users = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE username != 'admin' AND username != 'user'";
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while ((results.next())) {
+            User user = mapRowToUser(results);
+            users.add(user.getUsername());
+        }
+        return users;
+    }
+
+    @Override
     public User findByUsername(String username) {
         if(username == null) throw new IllegalArgumentException("Username cannot be null");
 
@@ -103,6 +116,27 @@ public class JdbcUserDao implements UserDao {
         return userCreated;
     }
 
+    @Override
+    public List<String> searchUsers(String searchTerm) {
+        searchTerm = searchTerm.toLowerCase();
+        List<String> results = new ArrayList<>();
+        String sql = "SELECT * FROM users WHERE username LIKE ?";
+        SqlRowSet rowset = jdbcTemplate.queryForRowSet(sql, "%" + searchTerm + "%");
+        while(rowset.next()){
+            User user = new User();
+            user = mapRowToUser(rowset);
+            results.add(user.getUsername());
+        }
+        return results;
+    }
+
+//    private User mapRowToUserTable(SqlRowSet rowset) {
+//        User user = new User();
+//        user.setId(rowset.getLong("user_id"));
+//        user.setUsername(rowset.getString("username"));
+//        return user;
+//    }
+
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
         user.setId(rs.getLong("user_id"));
@@ -110,6 +144,9 @@ public class JdbcUserDao implements UserDao {
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(rs.getString("role"));
         user.setActivated(true);
+        user.setBooksCompleted(rs.getInt("books_completed"));
+        user.setPagesRead(rs.getInt("pages_read"));
+        user.setMoneyEarned(rs.getDouble("money_earned"));
         return user;
     }
 }
