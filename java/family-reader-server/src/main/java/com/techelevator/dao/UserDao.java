@@ -1,5 +1,6 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.FamilyMemberStats;
 import com.techelevator.model.User;
 
 import java.util.List;
@@ -22,5 +23,5 @@ public interface UserDao {
 
     List<String> searchUsers(String searchTerm);
 
-    List<User> getUserByFamilyId(int familyId);
+    List<FamilyMemberStats> getUserByFamilyId(int familyId);
 }

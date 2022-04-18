@@ -4,6 +4,7 @@ import java.sql.PreparedStatement;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.techelevator.model.FamilyMemberStats;
 import com.techelevator.model.UserNotFoundException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -54,13 +55,14 @@ public class JdbcUserDao implements UserDao {
 	}
 
     @Override
-    public List<User> getUserByFamilyId(int familyId) {
-        List<User> famMembers = new ArrayList<>();
-        String sql = "SELECT * FROM users u JOIN users_family uf ON u.user_id = uf.user_id WHERE family_id = ?";
+    public List<FamilyMemberStats> getUserByFamilyId(int familyId) {
+        List<FamilyMemberStats> famMembers = new ArrayList<>();
+        String sql = "SELECT u.user_id, username, password_hash, role, u.books_completed, u.pages_read, u.money_earned, account_type, family_name FROM users u INNER JOIN users_family uf ON u.user_id = uf.user_id INNER JOIN\n" +
+                "family f ON f.family_id = uf.family_id WHERE f.family_id = ? ;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, familyId);
         while(results.next()) {
-            User user = mapRowToUser(results);
-            famMembers.add(user);
+            FamilyMemberStats familyMemberStats = mapRowToFamilyMemberStats(results);
+            famMembers.add(familyMemberStats);
         }
 
         return famMembers;
@@ -165,5 +167,18 @@ public class JdbcUserDao implements UserDao {
         user.setMoneyEarned(rs.getDouble("money_earned"));
         user.setAcccountType(rs.getString("account_type"));
         return user;
+    }
+
+    private FamilyMemberStats mapRowToFamilyMemberStats(SqlRowSet rs) {
+        FamilyMemberStats familyMemberStats = new FamilyMemberStats();
+        familyMemberStats.setId(rs.getLong("user_id"));
+        familyMemberStats.setUsername(rs.getString("username"));
+        familyMemberStats.setPassword(rs.getString("password_hash"));
+        familyMemberStats.setActivated(true);
+        familyMemberStats.setBooksCompleted(rs.getInt("books_completed"));
+        familyMemberStats.setPagesRead(rs.getInt("pages_read"));
+        familyMemberStats.setMoneyEarned(rs.getDouble("money_earned"));
+        familyMemberStats.setFamilyName(rs.getString("family_name"));
+        return familyMemberStats;
     }
 }

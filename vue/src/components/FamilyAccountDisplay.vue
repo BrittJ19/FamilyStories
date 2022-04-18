@@ -27,18 +27,33 @@
               <th>Charity Money Earned</th>
           </thead>
           <tbody>
-              <tr v-for="member in familyMembers" v-bind:key="member.username">
-                  <td id="familyName">{{ family.familyName }}</td>
-                  <td id="books">{{family.booksCompleted}}</td>
-                  <td id="pages">{{family.pagesRead}}</td>
-                  <td id="money">$ {{family.moneyEarned}}</td>
+              <tr v-for="member in familyMembers[0]" v-bind:key="member.id">
+                  <td id="username">{{member.username}}</td>
+                  <td id="familyName">{{member.familyName}}</td>
+                  <td id="books">{{member.booksCompleted}}</td>
+                  <td id="pages">{{member.pagesRead}}</td>
+                  <td id="money">$ {{member.moneyEarned}}</td>
                 </tr>
           </tbody>
       </table>
               </div>
           <div id="stats">
-              <h1>Family Reading Stats</h1>
-              <family-account-list id="list" />
+              <h1>Family Reading Accounts</h1>
+              <table>
+          <thead>
+              <th> Family Name</th>
+          </thead>
+          <tbody>
+              <tr v-for="account in familyAccounts[0]" v-bind:key="account.familyName">
+                  <td id="username">{{account.familyName}}</td>
+                </tr>
+          </tbody>
+      </table>
+              <!-- <family-account-list id="list" /> -->
+               <div id="options">
+          <router-link v-bind:to="{ name: 'newAccount' }"><button id="new">Create New Family Account</button></router-link>
+        <router-link v-bind:to="{name: 'addUser'}"><button id="update">Add User to Family Account</button></router-link>
+      </div>
           </div>
 
       </main>
@@ -64,18 +79,25 @@ export default {
     },
     created() {
         this.isLoading = true;
-        databaseService.getFamilyAccounts(this.userId).then((response) => {
+        databaseService.getFamilyAccounts(this.$store.state.user.id).then(response => {
             this.familyAccounts = response.data;
             console.log(response.data)
-            console.log(this.familyAccounts.familyId)
-        })
-        this.familyAccounts.forEach( account => {
-        databaseService.getUserByFamily(account.familyId).then( (response) => {
-            this.familyMembers.add(response.data)
+            console.log(this.$store.state.user.id)
+             response.data.forEach( account => {
+        databaseService.getUserByFamily(account.familyId).then( resp=> {
+            this.familyMembers.push(resp.data)
             this.isLoading = false;
             console.log(this.familyMembers)
-        });
         })
+            
+        })})
+        // this.familyAccounts.forEach( account => {
+        // databaseService.getUserByFamily(account.familyId).then( response => {
+        //     this.familyMembers.add(response.data)
+        //     this.isLoading = false;
+        //     console.log(this.familyMembers)
+        // });
+        // })
     }
 
 }
@@ -138,7 +160,6 @@ main{
     align-content: center ;
     align-items: center;
     color: rgb(245,245,220);
-    font-family: 'abeatbyKai', sans-serif;
     /* margin-left: 10px; */
 }
 
@@ -243,12 +264,50 @@ h1{
  }
  tbody{
      display: flex;
+     flex-direction: column;
      flex-grow: 1;
+     width: 100vh;
      justify-content: space-between;
      align-content: space-between;
+ }
+ tr{
+    display: flex;
+    justify-content: space-between;
+    margin: 0px
+     
+ }
+ td{
+     display:flex;
+     width: 100vh;
+     padding-top: 10px
  }
  thead{
      display: flex;
      flex-grow: 1;
+     width: 100vh;
+     justify-content: space-between;
+     align-content: space-between;
+     color:rgb(255,196,12);
+     padding-bottom: 15px;
  }
+ #options{
+    display: flex;
+    flex-direction: row;
+    /* margin-left: 75px; */
+    justify-content: center;
+
+}
+#books{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px
+}
+#pages{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px
+}
+#money{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    margin-left: 20px
+}
 </style>
