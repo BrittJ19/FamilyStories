@@ -55,6 +55,25 @@
 
 <script>
 export default {
+  name: "add-reading-Activity",
+  data() {
+    return {
+      newReading: {
+        reader: "",
+        title: "",
+        format: "",
+        numberOfPagesRead: 0,
+        minutesRead: 0,
+        notes: ""
+      }
+    };
+  },
+  methods: {
+        saveReadingRecord() {
+            this.$store.commit("ADD_READING_ACTIVITY", this.newReading);
+            // this.$router.push({name: 'reading-activity', params: {}});
+        }
+    }
 
 }
 </script>
@@ -62,7 +81,7 @@ export default {
 <style scoped>
 
   body{
-  background-image: url('/shutterstock_1690275997.jpg');
+  background-image: url('\public\background.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 1600px 1000px;

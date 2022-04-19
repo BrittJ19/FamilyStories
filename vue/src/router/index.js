@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from '../views/Home.vue'
+import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -11,6 +11,10 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
+<<<<<<< HEAD
+// import RecordReadingActivity from '../components/RecordReadingActivity'
+=======
+import MyBook from '../views/MyBook'
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
@@ -23,6 +27,7 @@ import ReadingLog from '../views/ReadingLog.vue'
 
 
 
+>>>>>>> 31328f8b505a5169d9f6d34f5b1213bffbbcb169
 
 Vue.use(Router)
 
@@ -42,7 +47,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Login,
+      component: Home,
       meta: {
         requiresAuth: true
       }
@@ -77,9 +82,9 @@ const router = new Router({
       component: Family
     },
     {
-      path:"/family/newAccount",
-      name: "newAccount",
-      component: FamilyAccounts
+    path:"/family/newAccount",
+    name: "newAccount",
+    component: FamilyAccounts
     },
     {
       path:"/aboutus",
@@ -92,7 +97,7 @@ const router = new Router({
       component: Charities
     },
     {
-      path:"/profile",
+      path:"/profile/:username",
       name:"userProfile",
       component: Profile
     },
@@ -100,6 +105,18 @@ const router = new Router({
       path:"/troubleshoot",
       name:"troubleshoot",
       component: Troubleshoot
+    },
+<<<<<<< HEAD
+    // {
+    //   path:"/recordReadingActivity",
+    //   name: "RecordReadingActivity",
+    //   component: RecordReadingActivity
+    // }
+=======
+    {
+      path:"/mybooks",
+      name:"myBooks",
+      component: MyBook
     },
     {
 
@@ -152,6 +169,7 @@ const router = new Router({
       name:"readingActivity",
       component: RecordReadingActivity
     }
+>>>>>>> 31328f8b505a5169d9f6d34f5b1213bffbbcb169
 
   ]
 })
