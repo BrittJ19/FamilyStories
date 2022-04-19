@@ -2,6 +2,7 @@
  <div>
      <find-friends-form/>
  </div>
+ 
 
 
 </template>

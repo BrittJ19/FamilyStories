@@ -95,6 +95,14 @@ CREATE TABLE reading_record (
 	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE friends (
+user_id int NOT NULL,
+username NOT NULL,
+favorite_book varchar,
+CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id),
+CONSTRAINT FK_profile FOREIGN KEY (favorite_book) REFERENCES profile(favorite_book)
+);
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 

@@ -65,6 +65,11 @@ export default new Vuex.Store({
         isbn: "9780545582995" 
       }
     ],
+    friends: [{
+      username:'',
+      user_Id:'',
+      favorite_book:''
+    }],
     
 
   mutations: {
@@ -101,11 +106,15 @@ export default new Vuex.Store({
     },
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
-    // ADD_BOOK(state, book){
-    //   state.books.push(book);
-    // }
+    },
+    ADD_BOOK(state,book){
+      state.books.push(book)
+    },
+    ADD_FRINED(state, user) {
+      state.friends.push(user);
+    }
   },
   actions: {},
   modules: {},
   strict: true
-}});
+});

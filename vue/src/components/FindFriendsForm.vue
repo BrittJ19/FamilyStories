@@ -4,7 +4,7 @@
       <div id="banner">
 
       <router-link v-bind:to="{ name: 'userProfile' }"><img id="logo" src="/offWhiteLogo.png"></router-link>
-      <h1>Find Fellow Bookworms</h1>
+      <h1>Fellow Bookworms</h1>
       </div>
      
     <main>
