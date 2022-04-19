@@ -26,20 +26,13 @@
      <main>
         <div id= "myBooks">
         <h1>My Books</h1>
-      </div>
-       <div class="bookShelf">
-    <div class="book">book-1</div>
-        <div class="book">book-2</div>
-        <div class="book">book-3</div>
-        <div class="book">book-4</div>
-        <div class="book">book-5</div>
-        <div class="book">book-6</div>
-        <div class="book">book-7</div>
-        <div class="book">book-8</div>
-        <div class="book">book-9</div>
-        <div class="book">book-10</div>
-    
+        <!-- <new-books v-for="(disBook,index) in books" v-bind:key="index"/>  -->
+         <!-- <new-books v-for="disBook in book" v-bind:key="disBook.isbn"/>    -->
   </div>
+  <div class ="bookShelf">
+  <new-books v-for="(disBook,index) in $store.state.books" v-bind:key="index"
+  v-bind:book="disBook"/>
+   </div>
    <div id= "bookForm">
       <add-book-form/>
       </div>
@@ -52,14 +45,16 @@
 </template>
 
 <script>
+ import NewBooks from '../components/NewBooks.vue'
 import AddBookForm from '../components/AddBookForm.vue'
 
 
 export default {
-    components: { AddBookForm
+    components: { AddBookForm,
+     NewBooks
  }
-
 }
+ 
 </script>
 
 <style scoped>
@@ -163,39 +158,47 @@ export default {
    display: flex;
    flex-grow: 1;
    background-color: rgb(150,165,60);
-   justify-self: center;
-   justify-content: center;
    color: rgb(245,245,220);
    font-family: 'abeatbyKai', sans-serif;
-   margin-top: 10px;
+   
+}
+h1{
+  margin-left: 900px;
+ 
 }
 main{
     grid-area: main;
+     background-color: rgb(245,245,220);
+     background-size: 100vh;
+    margin:0px
+}
+.new-books{
+  border: 3px solid rgb(150,165,60);
+  border-radius: 10px;
+  background-color:white;
+  margin-top: 10px;
+  width: 250px;
+  height: 350px;
+  margin: 20px;
+  margin-right: 40px;
+  padding: 40px;
+  justify-content: space-evenly;
+}
+.new-books:hover{
+
+}
+#bookForm{
+  text-align: center;
+  padding: 20px;
 }
 .bookShelf{
-  max-height: 610px;
-  padding: 20px;
-  border: 1px solid ;
-  display: flex;
+  max-height:  500px;
+  border: 1px solid;
+  display:flex;
   overflow-x: auto;
 }
 .bookShelf::-webkit-scrollbar{
   width: 0;
-}
-
-.bookShelf .book{
-  border: solid rgb(150,165,60);
-  min-width: 500px;
-  height: 600px;
-  line-height: 260px;
-  text-align: center;
-  background-color:rgb(245,245,220);
-  
-}.bookShelf .book:hover{
-  font-size: 20px;
-}
-#bookForm{
-  text-align: center;
 }
 
 

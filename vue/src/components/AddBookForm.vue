@@ -5,7 +5,6 @@
     <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
     <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
     <input class="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
-
     <button>Add</button>
   </form>
 </div>
@@ -40,13 +39,4 @@ export default {
 </script>
 
 <style Scoped>
-.add-book-form {
-    margin: 20px;
-}
-
-.add-book-form input, .add-book-form button {
-    margin: 10px;
-    font-size: 1rem;
-}
-
 </style>

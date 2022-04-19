@@ -1,31 +1,24 @@
 <template>
-  <div class='newBooks'>
-      <h2>
-          {{newBooks.books}}
-      </h2>
+  <div class='new-books'>
+     <div class= "book-title">
+          {{ book.title }}
+      </div>
+    <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
+    <div class="book-author">
+        {{ book.author }}
+    </div> 
   </div>
 </template>
 
 <script>
 export default {
-    props: {
-        newBooks: Object
-    }
-
+    name: 'new-book',
+    props: ["book"]
 }
 </script>
 
 <style Scoped>
-.newBooks {
-    background: #fff;
-    padding: 1.5em;
-}
-.newBooks:not(:last-child) {
-    border-bottom: 1px solid #ddd;
-}
-.newBooks h2 {
-    font-size: 1.3em;
-    padding-bottom: 0.25rem;
-}
+
+
 
 </style>
