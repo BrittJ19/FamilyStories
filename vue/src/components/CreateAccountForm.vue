@@ -47,9 +47,10 @@
       />
        <div class="form-element">
               <label for="account-type"> Account Type:</label>
-                  <select id="selections">
+                  <select id="selections" v-model="user.accountType">
                       <option value="parent">Parent</option>
                       <option value="child">Child</option>
+                      <option value="other">Other</option>
                   </select>
           </div> 
       <!-- <router-link id="account" :to="{ name: 'login' }">Have an account?</router-link> -->
@@ -80,6 +81,7 @@ export default {
         password: '',
         confirmPassword: '',
         role: 'user',
+        accountType: '',
       },
       message: '',
       registrationErrors: false,

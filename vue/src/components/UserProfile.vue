@@ -12,8 +12,8 @@
           <ul id="menu-items">
               <router-link id="family" v-bind:to="{ name: 'family' }"><li>Family<i id="famIcon" class="fa-solid fa-people-roof"></i></li></router-link>
               <li>Add a Book <i id="b" class="fa-solid fa-book-bookmark"></i> </li>
-              <li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li>
-              <li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li>
+              <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
+              <router-link id="log" v-bind:to="{ name: 'readingActivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
               <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
               <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
           </ul>
@@ -67,12 +67,28 @@ export default {
             isLoading: '',
             username: this.$store.state.user.username,
             currentUser: [],
+            pagesRead: '',
+            booksCompleted: '',
+            moneyEarned: '',
+            moneyDonated: ''
         };
     },
      created() {
          databaseService.getCurrentUser(this.$store.state.user.id).then( response => {
             this.currentUser= response.data;
             })
+         databaseService.getUserPagesRead(this.$store.state.user.id).then( response => {
+             this.pagesRead= response.data;
+         }) 
+         databaseService.getUserBooksCompleted(this.$store.state.user.id).then( response => {
+             this.booksCompleted = response.data;
+         }) 
+         databaseService.getUserMoneyEarned(this.$store.state.user.id).then( response => {
+             this.moneyEarned = response.data;
+         }) 
+         databaseService.getUserMoneyDonated(this.$store.state.user.id).then( response => {
+             this.moneyDonated = response.data;
+         })
      },
   components: { ProfilePicture },
 
@@ -193,7 +209,7 @@ main{
     font-family: 'abeatbyKai', sans-serif;
 }
 
-#family{
+#family, #log{
     text-decoration: none;
     color: rgb(245,245,220);
 }

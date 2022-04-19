@@ -58,6 +58,28 @@ public class FamilyController {
     public List<UserFamily> getFamilyAccounts(@PathVariable("userId") int userId) {
         return familyDao.getFamilyAccounts(userId);
     }
+//    @RequestMapping(path="/family/{userId}/childAccounts", method = RequestMethod.GET)
+//    public List<UserFamily>
+
+    @RequestMapping(path="/family/{familyId}/pagesRead", method = RequestMethod.GET)
+    public int getTotalFamilyPages(@PathVariable ("familyId") int familyId) {
+        return familyDao.getFamilyPages(familyId);
+    }
+
+    @RequestMapping(path="/family/{familyId}/booksCompleted", method = RequestMethod.GET)
+    public int getTotalFamilyBooksCompleted(@PathVariable ("familyId") int familyId) {
+        return familyDao.getFamilyBooksCompleted(familyId);
+    }
+
+    @RequestMapping(path="/family/{familyId}/moneyEarned", method = RequestMethod.GET)
+    public int getTotalFamilyMoneyEarned(@PathVariable ("familyId") int familyId) {
+        return familyDao.getFamilyMoneyEarned(familyId);
+    }
+
+    @RequestMapping(path="/family/{familyId}/moneyDonated", method = RequestMethod.GET)
+    public int getTotalFamilyMoneyDonated(@PathVariable ("familyId") int familyId) {
+        return familyDao.getFamilyMoneyDonated(familyId);
+    }
 
 //    @RequestMapping(path="/family/addMember/{username}", method = RequestMethod.POST)
 //    public boolean addFamilyMember(@PathVariable("username") String username) {

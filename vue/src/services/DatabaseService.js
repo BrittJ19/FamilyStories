@@ -43,6 +43,39 @@ export default{
     },
     getUserByFamily(familyId) {
         return database.get(`/user/family/${familyId}`)
+    },
+    getFamilyPagesRead(familyId) {
+        return database.get(`/family/${familyId}/pagesRead`)
+    },
+    getFamilyBooksCompleted(familyId) {
+        return database.get(`/family/${familyId}/booksCompleted`)
+    },
+    getFamilyMoneyEarned(familyId) {
+        return database.get(`/family/${familyId}/moneyEarned`)
+    },
+    getFamilyMoneyDonated(familyId) {
+        return database.get(`/family/${familyId}/moneyDonated`)
+    },
+    addReadingRecord(userId, readingRecord) {
+        return database.post(`/reading/${userId}/record`, readingRecord);
+    },
+    getUserPagesRead(userId) {
+        return database.get(`/reading/${userId}/pagesRead`)
+    },
+    getUserTimeReading(userId) {
+        return database.get(`/reading/${userId}/time`)
+    },
+    getUserBooksCompleted(userId) {
+        return database.get(`/reading/${userId}/booksCompleted`)
+    },
+    getUserMoneyEarned(userId) {
+        return database.get(`/reading/${userId}/moneyEarned`)
+    },
+    getUserMoneyDonated(userId) {
+        return database.get(`/reading/${userId}/moneyDonated`)
+    },
+    getReadingLogs(userId) {
+        return database.get(`reading/${userId}/logs`)
     }
 
 

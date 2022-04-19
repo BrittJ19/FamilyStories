@@ -19,6 +19,9 @@ import CheckActivity from '../views/CheckActivity.vue'
 import createAccount from '../views/CreateAccount.vue'
 import BookSlider from '../components/BookSlider.vue'
 import RecordReadingActivity from '../views/RecordReadingActivity.vue'
+import ReadingLog from '../views/ReadingLog.vue'
+
+
 
 
 Vue.use(Router)
@@ -134,10 +137,20 @@ const router = new Router({
     name: "favoriteBooks",
     component: BookSlider
     },
+    // {
+    // path:"/reading/record",
+    // name:"readingRecord",
+    // component: RecordReadingActivity
+    // },
     {
-    path:"/reading/record",
-    name:"readingRecord",
-    component: RecordReadingActivity
+    path:"/reading/log",
+    name:"readingLog",
+    component: ReadingLog
+    },
+    {
+      path:"/reading/activity",
+      name:"readingActivity",
+      component: RecordReadingActivity
     }
 
   ]

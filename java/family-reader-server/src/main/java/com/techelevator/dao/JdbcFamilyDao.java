@@ -52,9 +52,10 @@ public class JdbcFamilyDao implements FamilyDao{
     @Override
     public boolean createFamilyAccount(String familyName, int userId){
         try{
-        String sql = "INSERT INTO family (family_name) VALUES (?)";
+        String sql = "INSERT INTO family (family_name, books_completed, pages_read, money_earned, money_donated) " +
+                "VALUES (?,?,?,?,?)";
 
-        jdbcTemplate.update(sql, familyName);
+        jdbcTemplate.update(sql, familyName, 0, 0, 0.0, 0.0);
 
         sql = "INSERT INTO users_family (family_id, user_id) VALUES ((SELECT family_id FROM family WHERE family_name = ?),?)";
 
@@ -124,6 +125,61 @@ public class JdbcFamilyDao implements FamilyDao{
 //        }
 //    }
 
+    public int getFamilyPages(int familyId) {
+        int sum = 0;
+        String sql = "SELECT * FROM family WHERE family_id = ?";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while (rowSet.next()){
+            Family family = mapRowToFamily(rowSet);
+            sum += family.getPagesRead();
+        }
+        return sum;
+    }
+
+    @Override
+    public int getFamilyBooksCompleted(int familyId) {
+        int sum = 0;
+        String sql = "SELECT * FROM family WHERE family_id = ?";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while (rowSet.next()){
+            Family family = mapRowToFamily(rowSet);
+            sum += family.getBooksCompleted();
+        }
+        return sum;
+    }
+
+    @Override
+    public int getFamilyMoneyEarned(int familyId) {
+        int sum = 0;
+        String sql = "SELECT * FROM family WHERE family_id = ?";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while (rowSet.next()){
+            Family family = mapRowToFamily(rowSet);
+            sum += family.getMoneyEarned();
+        }
+        return sum;
+    }
+
+    @Override
+    public int getFamilyMoneyDonated(int familyId) {
+        int sum = 0;
+        String sql = "SELECT * FROM family WHERE family_id = ?";
+
+        SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, familyId);
+
+        while (rowSet.next()){
+            Family family = mapRowToFamily(rowSet);
+            sum += family.getMoneyDonated();
+        }
+        return sum;
+    }
+
 
     public User mapRowToUser (SqlRowSet rowSet) {
         User user = new User();
@@ -131,7 +187,7 @@ public class JdbcFamilyDao implements FamilyDao{
         user.setId(rowSet.getLong("user_id"));
         user.setUsername(rowSet.getString("username"));
         user.setPassword(rowSet.getString("password_hash"));
-        user.setAcccountType(rowSet.getString("account_type"));
+        user.setAccountType(rowSet.getString("account_type"));
         return user;
     }
 
@@ -143,6 +199,7 @@ public class JdbcFamilyDao implements FamilyDao{
         family.setBooksCompleted(rowSet.getInt("books_completed"));
         family.setPagesRead(rowSet.getInt("pages_read"));
         family.setMoneyEarned(rowSet.getDouble("money_earned"));
+        family.setMoneyDonated(rowSet.getDouble("money_donated"));
 
         return family;
     }

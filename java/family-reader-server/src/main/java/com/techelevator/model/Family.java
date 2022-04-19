@@ -8,6 +8,15 @@ public class Family {
     private int booksCompleted = 0;
     private int pagesRead = 0;
     private double moneyEarned = 0.0;
+    private double moneyDonated = 0.0;
+
+    public double getMoneyDonated() {
+        return moneyDonated;
+    }
+
+    public void setMoneyDonated(double moneyDonated) {
+        this.moneyDonated = moneyDonated;
+    }
 
     public int getBooksCompleted() {
         return booksCompleted;
