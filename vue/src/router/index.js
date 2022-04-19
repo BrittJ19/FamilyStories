@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-// import Home from '../views/Home.vue'
+import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -11,15 +11,7 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
-import FamilyAccountList from '../components/FamilyAccountList.vue'
-import loading from '../components/loading.vue'
-import addUser from '../components/AddUser'
-import FindFriendsForm from '../views/Friends'
-import CheckActivity from '../views/CheckActivity.vue'
-import createAccount from '../views/CreateAccount.vue'
-import BookSlider from '../components/BookSlider.vue'
-import RecordReadingActivity from '../views/RecordReadingActivity.vue'
-
+// import RecordReadingActivity from '../components/RecordReadingActivity'
 
 Vue.use(Router)
 
@@ -39,7 +31,7 @@ const router = new Router({
     {
       path: '/',
       name: 'home',
-      component: Login,
+      component: Home,
       meta: {
         requiresAuth: true
       }
@@ -74,9 +66,9 @@ const router = new Router({
       component: Family
     },
     {
-      path:"/family/newAccount",
-      name: "newAccount",
-      component: FamilyAccounts
+    path:"/family/newAccount",
+    name: "newAccount",
+    component: FamilyAccounts
     },
     {
       path:"/aboutus",
@@ -89,7 +81,7 @@ const router = new Router({
       component: Charities
     },
     {
-      path:"/profile",
+      path:"/profile/:username",
       name:"userProfile",
       component: Profile
     },
@@ -98,47 +90,11 @@ const router = new Router({
       name:"troubleshoot",
       component: Troubleshoot
     },
-    {
-
-      path:"/familyAccountList",
-      name:"familyAccountList",
-      component: FamilyAccountList
-    },
-    {
-      path:"/loading",
-      name: "loading",
-      component: loading
-    },
-    {
-      path:"/family/addUser",
-      name: "addUser",
-      component: addUser
-    },
-    {
-      path:"/friends",
-      name:"friends",
-      component: FindFriendsForm
-    },
-    { 
-      path:"/checkactivity",
-      name:"checkactivity",
-      component: CheckActivity
-    },
-    {
-      path:"/account/create",
-      name: "createAccount",
-      component: createAccount
-    },
-    {
-    path:"/books/favorites",
-    name: "favoriteBooks",
-    component: BookSlider
-    },
-    {
-    path:"/reading/record",
-    name:"readingRecord",
-    component: RecordReadingActivity
-    }
+    // {
+    //   path:"/recordReadingActivity",
+    //   name: "RecordReadingActivity",
+    //   component: RecordReadingActivity
+    // }
 
   ]
 })
