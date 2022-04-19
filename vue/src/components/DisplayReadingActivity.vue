@@ -26,6 +26,7 @@ export default {
 .container{
   background-color: rgb(255,117,24);
   }
+  
   #logo{
      width: 180px;
      height: 120px;
