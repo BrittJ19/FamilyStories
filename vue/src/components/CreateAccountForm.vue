@@ -48,7 +48,7 @@
        <div class="form-element">
               <label for="account-type"> Account Type:</label>
                   <select id="selections" v-model="user.accountType">
-                      <option value="parent">Parent</option>
+                      <option value="parent">Adult</option>
                       <option value="child">Child</option>
                       <option value="other">Other</option>
                   </select>

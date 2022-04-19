@@ -104,8 +104,8 @@ export default new Vuex.Store({
     // ADD_BOOK(state, book){
     //   state.books.push(book);
     // }
-  },
+  }},
   actions: {},
   modules: {},
   strict: true
-}});
+});
