@@ -81,7 +81,7 @@ export default {
 <style scoped>
 
   body{
-  background-image: url('\public\background.jpg');
+  background-image: url('/public/background.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 1600px 1000px;

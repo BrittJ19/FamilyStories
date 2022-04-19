@@ -15,17 +15,6 @@ export default {
   components: {FindFriendsForm},
   methods: {
 
-searchByUser(){
-
-
-
-},
-addFriends(){
-
-
-
-}
-
 } 
 
 }
