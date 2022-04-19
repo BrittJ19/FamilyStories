@@ -109,11 +109,11 @@ public class JdbcUserDao implements UserDao {
 
 
     @Override
-    public boolean create(String username, String password, String role) {
+    public boolean create(String username, String password, String role, String accountType, int booksCompleted, int pagesRead, double moneyEarned, double moneyDonated) {
         boolean userCreated = false;
 
         // create user
-        String insertUser = "insert into users (username,password_hash,role) values(?,?,?)";
+        String insertUser = "insert into users (username,password_hash,role, account_type, books_completed, pages_read, money_earned, money_donated) values(?,?,?,?,?,?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
 
@@ -124,6 +124,11 @@ public class JdbcUserDao implements UserDao {
                     ps.setString(1, username);
                     ps.setString(2, password_hash);
                     ps.setString(3, ssRole);
+                    ps.setString(4, accountType);
+                    ps.setInt(5, 0);
+                    ps.setInt(6, 0);
+                    ps.setDouble(7, 0.0);
+                    ps.setDouble(8, 0.0);
                     return ps;
                 }
                 , keyHolder) == 1;
@@ -165,7 +170,7 @@ public class JdbcUserDao implements UserDao {
         user.setBooksCompleted(rs.getInt("books_completed"));
         user.setPagesRead(rs.getInt("pages_read"));
         user.setMoneyEarned(rs.getDouble("money_earned"));
-        user.setAcccountType(rs.getString("account_type"));
+        user.setAccountType(rs.getString("account_type"));
         return user;
     }
 

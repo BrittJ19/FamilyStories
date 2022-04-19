@@ -25,6 +25,9 @@ export default new Vuex.Store({
     search: '',
     family: [],
     NewFamilyAccount: '',
+    familyAccounts: [],
+    familyMembers: [],
+  },
     books: [
       {
         title: "Misery",
@@ -61,9 +64,9 @@ export default new Vuex.Store({
         author:"J.K Rowling",
         isbn: "9780545582995" 
       }
-    ]
-    },
+    ],
     
+
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -93,11 +96,16 @@ export default new Vuex.Store({
     SET_NEW_FAMILY(state, resp) {
       state.NewFamilyAccount = resp;
     },
-    ADD_BOOK(state, book){
-      state.books.push(book);
-    }
+    SET_FAMILY_MEMBERS(state, familyMembersArray) {
+      state.familyMembers = familyMembersArray;
+    },
+    SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
+      state.familyAccounts = familyAccountsArray;
+    // ADD_BOOK(state, book){
+    //   state.books.push(book);
+    // }
   },
   actions: {},
   modules: {},
   strict: true
-});
+}});

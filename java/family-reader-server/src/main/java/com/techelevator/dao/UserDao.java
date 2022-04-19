@@ -19,7 +19,7 @@ public interface UserDao {
 
     Integer findIdByUsername(String username);
 
-    boolean create(String username, String password, String role);
+    boolean create(String username, String password, String role, String accountType, int booksCompleted, int pagesRead, double moneyEarned, double moneyDonated);
 
     List<String> searchUsers(String searchTerm);
 

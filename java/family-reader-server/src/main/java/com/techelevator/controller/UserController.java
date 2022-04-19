@@ -36,6 +36,7 @@ public class UserController {
     public User getCurrentUser(@PathVariable ("userId") Long userId) {
         return userDao.getUserById(userId);
     }
+
     @RequestMapping(path= "/user/find={username}", method = RequestMethod.GET)
     public Integer getUserByUsername(@PathVariable ("username") String username) {
         return userDao.findIdByUsername(username);
@@ -44,4 +45,5 @@ public class UserController {
     public List<FamilyMemberStats> getUserByFamily(@PathVariable("familyId") int familyId) {
         return userDao.getUserByFamilyId(familyId);
     }
+
 }

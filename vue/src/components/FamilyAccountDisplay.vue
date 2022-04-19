@@ -8,8 +8,8 @@
           <ul id="menu-items">
               <router-link id="family" v-bind:to="{ name: 'userProfile' }"><li>Back To Profile <i id="b" class="fa-solid fa-arrow-left-long"></i></li></router-link>
               <li>Add a Book <i id="b" class="fa-solid fa-book-bookmark"></i> </li>
-              <li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li>
-              <li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li>
+              <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
+              <router-link id="log" v-bind:to="{ name: 'readingActivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
               <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
               <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
           </ul>
@@ -17,7 +17,7 @@
       <main>
           <div id="name">
 
-              <h1>Family Members</h1>
+              <h1 class="heading">Family Members</h1>
                <table>
           <thead>
               <th>Username</th>
@@ -38,14 +38,20 @@
       </table>
               </div>
           <div id="stats">
-              <h1>Family Reading Accounts</h1>
+              <h1 class="heading">Family Reading Accounts</h1>
               <table>
           <thead>
               <th> Family Name</th>
+              <th> Total Books Read </th>
+              <th> Total Pages Read </th>
+              <th> Total Money Earned </th>
           </thead>
           <tbody>
-              <tr v-for="account in familyAccounts[0]" v-bind:key="account.familyName">
+              <tr v-for="account in familyAccounts" v-bind:key="account.familyName">
                   <td id="username">{{account.familyName}}</td>
+                  <td>{{booksCompleted}}</td>
+                  <td>{{pagesRead}}</td>
+                  <td>{{moneyEarned}}</td>
                 </tr>
           </tbody>
       </table>
@@ -74,23 +80,30 @@ export default {
             familyAccounts: [],
             familyMembers: [],
             memberStats: [],
-            isLoading: ''
+            isLoading: '',
+            pagesRead: '',
+            booksCompleted: '',
+            moneyEarned: '',
+            moneyDonated: '',
+            familyId: '',
         };
     },
     created() {
         this.isLoading = true;
         databaseService.getFamilyAccounts(this.$store.state.user.id).then(response => {
             this.familyAccounts = response.data;
-            console.log(response.data)
-            console.log(this.$store.state.user.id)
-             response.data.forEach( account => {
+            response.data.forEach( account => {
         databaseService.getUserByFamily(account.familyId).then( resp=> {
             this.familyMembers.push(resp.data)
             this.isLoading = false;
-            console.log(this.familyMembers)
         })
+
             
         })})
+        databaseService.getFamilyPagesRead(this.familyAccounts.familyId).then(response => {
+            this.pagesRead = response;
+            console.log(this.familyAccounts.familyId)
+        })
         // this.familyAccounts.forEach( account => {
         // databaseService.getUserByFamily(account.familyId).then( response => {
         //     this.familyMembers.add(response.data)
@@ -143,6 +156,10 @@ main{
     flex-direction: column;
     grid-area: main;
 }
+.heading{
+    display: flex;
+    justify-content: center;
+}
 
 main{
     display: flex;
@@ -153,13 +170,14 @@ main{
     /* height: 80%; */
 }
 
-#name{
+#name, #stats{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-content: center ;
     align-items: center;
     color: rgb(245,245,220);
+    font-family: 'abeatbyKai', sans-serif;
     /* margin-left: 10px; */
 }
 
@@ -224,8 +242,7 @@ body{
 h1{
     display: flex;
     flex-grow: 1;
-    justify-content: center;
-    align-content: center;
+    align-self: center;
     color: rgb(245,245,220);
     font-family: 'abeatbyKai', sans-serif;
 }
@@ -285,6 +302,7 @@ h1{
      display: flex;
      flex-grow: 1;
      width: 100vh;
+     font-size: 25px;
      justify-content: space-between;
      align-content: space-between;
      color:rgb(255,196,12);

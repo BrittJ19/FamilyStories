@@ -16,19 +16,28 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
-   private int booksCompleted =0;
+   private int booksCompleted = 0;
    private int pagesRead =0;
    private double moneyEarned = 0.0;
+   private double moneyDonated = 0.0;
+   private String accountType;
 
-   public String getAcccountType() {
-      return acccountType;
+   public double getMoneyDonated() {
+      return moneyDonated;
    }
 
-   public void setAcccountType(String acccountType) {
-      this.acccountType = acccountType;
+   public void setMoneyDonated(double moneyDonated) {
+      this.moneyDonated = moneyDonated;
    }
 
-   private String acccountType = "parent";
+   public String getAccountType() {
+      return accountType;
+   }
+
+   public void setAccountType(String accountType) {
+      this.accountType = accountType;
+   }
+
 
    public int getBooksCompleted() {
       return booksCompleted;

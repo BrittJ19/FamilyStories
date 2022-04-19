@@ -1,16 +1,16 @@
 <template>
-<!-- class = 'ReadingLog' -->
+
 <div>
-    <record-reading-activity/>
+    <reading-log-display />
 
 </div>
   
 </template>
 
 <script>
-import RecordReadingActivity from '../components/RecordReadingActivity.vue'
+import ReadingLogDisplay from '../components/ReadingLogDisplay.vue'
 export default {
-  components: { RecordReadingActivity },
+  components: { ReadingLogDisplay },
 
 }
 
