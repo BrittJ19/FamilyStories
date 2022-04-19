@@ -17,14 +17,53 @@ if(currentToken != null) {
 }
 
 export default new Vuex.Store({
+  
   state: {
     token: currentToken || '',
     user: currentUser || {},
     users: [],
     search: '',
     family: [],
-    NewFamilyAccount: ''
-  },
+    NewFamilyAccount: '',
+    books: [
+      {
+        title: "Misery",
+        author: "Stephen King",
+        isbn: "9780670813643"
+      },
+      {
+        title: "The Seven Husbands of Evelyn Hugo",
+        author: "Taylor Jenkins Reid",
+        isbn: "9781982147662"
+      },
+      {
+        title: "The Giving Tree",
+        author: "Ernest Hemingway",
+        isbn: "9780684830490"
+      },
+      {
+        title: "Le Petit Prince",
+        author: "Shel Silverstein",
+        isbn: "0060256656"
+      },
+      {
+        title:"The Midnight Library",
+        author:"Matt Haig",
+        isbn: "9780525559474" 
+      },
+      {
+        title:"Harry Potter and The Deathly Hallows",
+        author:"J.K Rowling",
+        isbn: "9780545139700" 
+      },
+      {
+        title:"Harry Potter and The Half-Blood Prince",
+        author:"J.K Rowling",
+        isbn: "9780545582995" 
+      }
+    ]
+    },
+    
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
@@ -53,6 +92,12 @@ export default new Vuex.Store({
     },
     SET_NEW_FAMILY(state, resp) {
       state.NewFamilyAccount = resp;
+    },
+    ADD_BOOK(state, book){
+      state.books.push(book);
     }
-  }
-})
+  },
+  actions: {},
+  modules: {},
+  strict: true
+});

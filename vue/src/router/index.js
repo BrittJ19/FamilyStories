@@ -11,7 +11,20 @@ import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
+<<<<<<< HEAD
 // import RecordReadingActivity from '../components/RecordReadingActivity'
+=======
+import MyBook from '../views/MyBook'
+import FamilyAccountList from '../components/FamilyAccountList.vue'
+import loading from '../components/loading.vue'
+import addUser from '../components/AddUser'
+import FindFriendsForm from '../views/Friends'
+import CheckActivity from '../views/CheckActivity.vue'
+import createAccount from '../views/CreateAccount.vue'
+import BookSlider from '../components/BookSlider.vue'
+import RecordReadingActivity from '../views/RecordReadingActivity.vue'
+
+>>>>>>> 31328f8b505a5169d9f6d34f5b1213bffbbcb169
 
 Vue.use(Router)
 
@@ -90,11 +103,60 @@ const router = new Router({
       name:"troubleshoot",
       component: Troubleshoot
     },
+<<<<<<< HEAD
     // {
     //   path:"/recordReadingActivity",
     //   name: "RecordReadingActivity",
     //   component: RecordReadingActivity
     // }
+=======
+    {
+      path:"/mybooks",
+      name:"myBooks",
+      component: MyBook
+    },
+    {
+
+      path:"/familyAccountList",
+      name:"familyAccountList",
+      component: FamilyAccountList
+    },
+    {
+      path:"/loading",
+      name: "loading",
+      component: loading
+    },
+    {
+      path:"/family/addUser",
+      name: "addUser",
+      component: addUser
+    },
+    {
+      path:"/friends",
+      name:"friends",
+      component: FindFriendsForm
+    },
+    { 
+      path:"/checkactivity",
+      name:"checkactivity",
+      component: CheckActivity
+    },
+    {
+      path:"/account/create",
+      name: "createAccount",
+      component: createAccount
+    },
+    {
+    path:"/books/favorites",
+    name: "favoriteBooks",
+    component: BookSlider
+    },
+    {
+    path:"/reading/record",
+    name:"readingRecord",
+    component: RecordReadingActivity
+    }
+>>>>>>> 31328f8b505a5169d9f6d34f5b1213bffbbcb169
 
   ]
 })
