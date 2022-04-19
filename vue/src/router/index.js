@@ -19,6 +19,7 @@ import FindFriendsForm from '../views/Friends'
 import CheckActivity from '../views/CheckActivity.vue'
 import createAccount from '../views/CreateAccount.vue'
 import BookSlider from '../components/BookSlider.vue'
+import RecordReadingActivity from '../views/RecordReadingActivity.vue'
 
 
 Vue.use(Router)
@@ -138,8 +139,12 @@ const router = new Router({
     path:"/books/favorites",
     name: "favoriteBooks",
     component: BookSlider
+    },
+    {
+    path:"/reading/record",
+    name:"readingRecord",
+    component: RecordReadingActivity
     }
-
 
   ]
 })

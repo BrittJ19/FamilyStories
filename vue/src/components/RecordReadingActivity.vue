@@ -62,7 +62,7 @@ export default {
 <style scoped>
 
   body{
-    background-image: url('shutterstock_1690275997.jpg');
+  background-image: url('/shutterstock_1690275997.jpg');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 1600px 1000px;

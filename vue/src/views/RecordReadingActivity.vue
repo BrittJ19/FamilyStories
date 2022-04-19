@@ -1,5 +1,6 @@
 <template>
-<div class = 'ReadingLog'>
+<!-- class = 'ReadingLog' -->
+<div>
     <record-reading-activity/>
 
 </div>
