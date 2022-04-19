@@ -26,34 +26,34 @@
   
   <main> 
     <div id=Check>  
-    <table>
-      <thead>
-        <tr>
-          <th>User</th>
-          <th>Current Book</th>
-          <th>Minutes Read</th>
-          <th>Books Completed</th>
-          <th>Pages Read</th>
-          <th>Prize Tracker</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Andre</td>
-          <td>"Outwitting the Devil"</td>
-          <td>44mins</td>
-          <td>"The color purple"</td>
-          <td>$0</td>
-        </tr>
-          <tr>
-            <tc>Ayesha</tc>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
-      </tbody>
-
-    </table>
+     <table>
+          <thead>
+              <th>Username</th>
+              <th>Account Type</th>
+              <th>Title</th>
+              <th>Book Format</th>
+              <th>Time</th>
+              <th>Pages Read</th>
+              <th>Book Finished</th>
+              <th>Notes</th>
+          </thead>
+          <tbody>
+              <tr v-for="log in logs" v-bind:key="log.recordId">
+                  <td id="username">{{ log.username }}</td>
+                  <td id="accountType">{{log.accountType}}</td>
+                   <td id="title">{{log.bookTitle}}</td>
+                   <td id="format">{{log.format}}</td>
+                   <td id="time">{{log.timeReading}}</td>
+                   <td id="pages">{{log.pagesRead}}</td>
+                   <td id="finish">{{log.completed}}</td>
+                   <td id="notes">{{log.notes}}</td>     
+                   <button class="btn btn-xs btn-danger" @click="deleteEvent(event)">Delete</button>            
+                  <!-- <td id="books">{{family.booksCompleted}}</td>
+                  <td id="pages">{{family.pagesRead}}</td>
+                  <td id="money">$ {{family.moneyEarned}}</td> -->
+                </tr>
+          </tbody>
+      </table>
     </div>
   </main>
  

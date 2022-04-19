@@ -110,7 +110,7 @@ export default new Vuex.Store({
     ADD_BOOK(state,book){
       state.books.push(book)
     },
-    ADD_FRINED(state, user) {
+    ADD_FRIEND(state, user) {
       state.friends.push(user);
     }
   },
