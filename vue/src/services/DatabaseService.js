@@ -33,7 +33,9 @@ export default{
     addMemberToFamily(userFamily) {
         return database.post('/family/addMember', userFamily);
     },
-
+    addFriends(userFriends) {
+        return database.post('/friends', userFriends);
+    },
     getCurrentUser(userId) {
         return database.get(`/user/${userId}`)
     },

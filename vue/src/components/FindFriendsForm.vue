@@ -10,7 +10,7 @@
     <main>
       <div id="accountForm">
         
-         <div id="main"> 
+         
       <form v-on:submit.prevent="searchForUsers">
           <!-- v-on:submit.prevent="addToFamily" -->
           <div id="searchBox" class="form-element">
@@ -29,13 +29,13 @@
           </div> 
          
           <div class="act">
-              <button id="submit" @click="addToFriends()">Add User to my Friends</button>
+              <button id="submit" @click="addFriends()">Add User to my Friends</button>
           </div>
           <!-- <h1>{{message}}</h1> -->
       </form>
        <router-link v-bind:to="{ name: 'userProfile' }"><button id="back">Back</button></router-link>
       </div>
-      </div>
+    
     </main>
       </div>
    
@@ -48,14 +48,7 @@ export default {
     name: "friends",
     data() {
         return {
-            familyAccount: {
-                familyName: '',
-                userId: '',
-
-            },
-            newUser: {
-
-            },
+           
             message: "",
             isLoading: '',
             text1: '',
@@ -80,7 +73,7 @@ export default {
         })
     },
     methods: {
-        
+       
             updateSearchFilter() {
                 this.$store.commit('UPDATE_SEARCH', this.searchTerm);
             },
@@ -120,13 +113,13 @@ export default {
                 console.log(accountValue)
 
             },
-            addToFamily() {
-                 const userFamily = {
+            addFriends() {
+                 const userFriends = {
                 familyName: this.familyAccount.familyName,
                 userId: this.familyAccount.userId
             };
-                console.log(userFamily);
-                databaseService.addMemberToFriends(userFamily).then( resp => {
+                console.log(userFriends);
+                databaseService.addMemberToFriends(userFriends).then( resp => {
                     console.log(resp.statusText)
                     if(resp.status == 200){
                         this.memberAdded = true;
