@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '../views/Home.vue'
+// import Home from '../views/Home.vue'
 import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
@@ -9,10 +9,10 @@ import Family from '../views/Family.vue'
 import FamilyAccounts from '../views/FamilyAccounts.vue'
 import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
-import Profile from '../views/Profile'
-import Troubleshoot from '../views/Troubleshoot'
+import Profile from '../views/Profile.vue'
+import Troubleshoot from '../views/Troubleshoot.vue'
 // import RecordReadingActivity from '../components/RecordReadingActivity'
-import MyBook from '../views/MyBook'
+import MyBook from '../views/MyBook.vue'
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
@@ -40,8 +40,8 @@ const router = new Router({
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: Home,
+      name: 'login',
+      component: Login,
       meta: {
         requiresAuth: true
       }
@@ -100,11 +100,6 @@ const router = new Router({
       name:"troubleshoot",
       component: Troubleshoot
     },
-    // {
-    //   path:"/recordReadingActivity",
-    //   name: "RecordReadingActivity",
-    //   component: RecordReadingActivity
-    // }
     {
       path:"/mybooks",
       name:"myBooks",
@@ -146,6 +141,9 @@ const router = new Router({
     name: "favoriteBooks",
     component: BookSlider
     },
+  
+
+
     {
     path:"/reading/record",
     name:"readingRecord",
