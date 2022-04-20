@@ -3,6 +3,7 @@
       <div>
        <table>
           <thead>
+              <th>Date</th>
               <th>Username</th>
               <th>Account Type</th>
               <th>Title</th>
@@ -14,6 +15,7 @@
           </thead>
           <tbody>
               <tr v-for="log in logs" v-bind:key="log.recordId">
+                  <td id="date">{{log.dateTime}}</td>
                   <td id="username">{{ log.username }}</td>
                   <td id="accountType">{{log.accountType}}</td>
                    <td id="title">{{log.bookTitle}}</td>

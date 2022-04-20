@@ -138,7 +138,8 @@ body{
     height: 60vh;
     margin-left: 300px;
     margin-right: 300px;
-    border-radius: 5%
+    border-radius: 5%;
+    
 }
 form{
     padding-top: 0%;
@@ -159,7 +160,7 @@ input{
 }
 #submit{
     align-self: center;
-    margin-left: 38px;
+    margin-left: 60px;
 }
 label{
     margin-left: 35px;
@@ -175,14 +176,20 @@ h1{
     margin-left: 200px
 }
 #submit{
-    padding: 15px;
+    padding: 100px;
     border-radius: 10%;
 }
 #back{
-  padding: 15px;
+  /* padding: 15px;
   border-radius: 10%;
   width: 140px;
-  margin-left: 40px;
+  margin-left: 40px; */
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  align-content: center;
+  flex-grow: 1;
+  width: 100vh
 
 }
 .form-element{
@@ -191,6 +198,15 @@ h1{
 }
 #selections{
   height: 30px;
+}
+button{
+  display: flex;
+  align-self: center;
+}
+#nav{
+   -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
 }
 
 
