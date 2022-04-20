@@ -11,9 +11,9 @@
       <div id="menu">
           <ul id="menu-items">
               <router-link id="family" v-bind:to="{ name: 'family' }"><li>Family<i id="famIcon" class="fa-solid fa-people-roof"></i></li></router-link>
-              <li>Add a Book <i id="b" class="fa-solid fa-book-bookmark"></i> </li>
+             <router-link id="books" v-bind:to="{name:'myBooks'}"><li>My Books <i id="b" class="fa-solid fa-book-bookmark"></i> </li></router-link> 
               <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
-              <router-link id="log" v-bind:to="{ name: 'readingActivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
+              <router-link id="log" v-bind:to="{ path: '/checkactivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
               <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
               <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
           </ul>
@@ -110,7 +110,11 @@ export default {
     "menu . main ."
     ;
 } */
-
+i{
+     -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
+}
 #booksComp{
     margin-right: 50px;
 }
@@ -209,7 +213,7 @@ main{
     font-family: 'abeatbyKai', sans-serif;
 }
 
-#family, #log{
+#family, #log, #books{
     text-decoration: none;
     color: rgb(245,245,220);
 }
@@ -255,7 +259,7 @@ li:nth-child(odd){
 }
 
 body{
-    background-color: rgb(245,245,220);
+    /* background-color: rgb(245,245,220); */
     background-image: url("/background.jpg");
     background-size: 100vh;
     margin:0px
@@ -273,6 +277,9 @@ body{
     margin-left: 20px;
     border: 4px solid rgb(255,196,12);
     margin-right: 60px;
+     -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
 }
 
 h1{

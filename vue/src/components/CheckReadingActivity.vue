@@ -26,16 +26,17 @@
   
   <main> 
     <div id=Check>  
-     <table>
-          <thead>
-              <th>Username</th>
-              <th>Account Type</th>
-              <th>Title</th>
-              <th>Book Format</th>
-              <th>Time</th>
-              <th>Pages Read</th>
-              <th>Book Finished</th>
-              <th>Notes</th>
+     <table style="table-layout:fixed">
+          <thead style="display:table-header-group">
+              <th style="width: 20px">Date</th>
+              <th style="width: 20px">Username</th>
+              <th style="width: 20px">Account Type</th>
+              <th style="width: 20px">Title</th>
+              <th style="width: 20px">Book Format</th>
+              <th style="width: 20px">Time</th>
+              <th style="width: 20px">Pages Read</th>
+              <th style="width: 20px">Book Finished</th>
+              <th style="width: 20px">Notes</th>
           </thead>
           <tbody>
               <tr v-for="log in logs" v-bind:key="log.recordId">
@@ -48,6 +49,16 @@
                    <td id="finish">{{log.completed}}</td>
                    <td id="notes">{{log.notes}}</td>     
                                
+                <td id="date">{{log.dateTime}}</td>
+                  <td id="username" style="width: 20px">{{ log.username }}</td>
+                  <td id="accountType" style="width: 20px">{{log.accountType}}</td>
+                   <td id="title" style="width: 20px">{{log.bookTitle}}</td>
+                   <td id="format" style="width: 20px">{{log.format}}</td>
+                   <td id="time" style="width: 20px">{{log.timeReading}}</td>
+                   <td id="pages" style="width: 20px">{{log.pagesRead}}</td>
+                   <td id="finish" style="width: 20px">{{log.completed}}</td>
+                   <td id="notes" style="width: 20px">{{log.notes}}</td>     
+                   <!-- <button class="btn btn-xs btn-danger" @click="deleteEvent(event)">Delete</button>             -->
                   <!-- <td id="books">{{family.booksCompleted}}</td>
                   <td id="pages">{{family.pagesRead}}</td>
                   <td id="money">$ {{family.moneyEarned}}</td> -->
@@ -63,9 +74,30 @@
 </template>
 
 <script>
+import moment from 'moment'
+import databaseService from '../services/DatabaseService'
 import '@fortawesome/fontawesome-free/css/all.css'
 import '@fortawesome/fontawesome-free/js/all.js'
 export default {
+  data() {
+        return {
+            logs: [],
+            isLoading: '',
+            formattedDate:[]
+        };
+    },
+    created() {
+        // this.isLoading = true;
+        databaseService.getReadingLogs(this.$store.state.user.id).then( response => {
+            this.logs = response.data;
+           this.logs.forEach( log => {
+             if(log.dateTime) {
+               log.dateTime = moment(String(log.dateTime)).format('MM/DD/YYYY')
+             }
+           })
+            // this.isLoading = false;
+        });
+    }
 
 }
 </script>
@@ -78,7 +110,27 @@ export default {
    text-align: center;
    
  }
-table {
+ table{
+   all: initial;
+ }
+ thead{
+   all: initial;
+ }
+ th{
+   all: initial;
+ }
+ td{
+   all: initial;
+ }
+ main{
+   all: initial;
+ }
+ tr{
+   all: initial;
+ }
+
+
+/* table {
   font-family: Arial;
   border: 5px solid black;
   margin: 10px;
@@ -96,7 +148,7 @@ td{
 tbody {
   text-align: left;
   margin: 10px;
-}
+} */
 #logo{
    width: 180px;
    height: 120px;

@@ -9,7 +9,7 @@
               <router-link id="family" v-bind:to="{ name: 'userProfile' }"><li>Back To Profile <i id="b" class="fa-solid fa-arrow-left-long"></i></li></router-link>
               <li>Add a Book <i id="b" class="fa-solid fa-book-bookmark"></i> </li>
               <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
-              <router-link id="log" v-bind:to="{ name: 'readingActivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
+              <router-link id="log" v-bind:to="{ path: '/checkactivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
               <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
               <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
           </ul>
@@ -149,12 +149,18 @@ nav{
     /* justify-content: space-between; */
     flex-grow: 1;
     background-color: rgb(255,117,24);
+     -webkit-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 20px rgba(50, 50, 50, 0.75);
 }
 
 main{
     display: flex;
     flex-direction: column;
     grid-area: main;
+      -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 100);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 100);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 100);
 }
 .heading{
     display: flex;
@@ -164,7 +170,7 @@ main{
 main{
     display: flex;
     flex-direction: column;
-    background-color: rgb(150,165,60);
+    /* background-color: rgb(150,165,60); */
     /* margin: 25px; */
     width: 100%;
     /* height: 80%; */
@@ -189,7 +195,10 @@ main{
 #menu{
     display: flex;
     grid-area: menu;
-    height: 100vh
+    height: 100vh;
+     -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
 }
 
 #menu-items{
@@ -219,9 +228,9 @@ ul{
     flex-grow: 1;
 }
 
-li:nth-child(odd){
+/* li:nth-child(odd){
     background-color: darkolivegreen;
-}
+} */
 
 body{
     background-color: rgb(245,245,220);
@@ -270,6 +279,7 @@ h1{
    align-self: center;
   color: rgb(245,245,220);
   filter: opacity(0.5) drop-shadow(0,0,0 rgb(150,165,60));
+  
  }
  table{
      display: flex;
@@ -278,6 +288,7 @@ h1{
      flex-direction: column;
      justify-content: space-between;
      align-items: center;
+     
  }
  tbody{
      display: flex;
@@ -289,14 +300,16 @@ h1{
  }
  tr{
     display: flex;
+    width: 100vh;
     justify-content: space-between;
-    margin: 0px
+    padding-right: 200px
      
  }
  td{
      display:flex;
      width: 100vh;
-     padding-top: 10px
+     padding-right: 100px
+
  }
  thead{
      display: flex;
@@ -306,13 +319,14 @@ h1{
      justify-content: space-between;
      align-content: space-between;
      color:rgb(255,196,12);
-     padding-bottom: 15px;
+    
  }
  #options{
     display: flex;
     flex-direction: row;
     /* margin-left: 75px; */
     justify-content: center;
+    
 
 }
 #books{
@@ -327,5 +341,10 @@ h1{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
     margin-left: 20px
+}
+#new, #update{
+      -webkit-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 0px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 0px 20px rgba(50, 50, 50, 0.75);
 }
 </style>

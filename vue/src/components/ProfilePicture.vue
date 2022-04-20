@@ -40,6 +40,9 @@ button{
     margin-right: 0px;
     padding: 10px;
     color: rgb(245,245,220);
+     -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
+    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
+    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
 }
 
 </style>
