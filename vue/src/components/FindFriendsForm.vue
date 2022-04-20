@@ -106,19 +106,26 @@ export default {
 
             },
             addFriends() {
-                 const userFriends = {
-                username: this.userAccount.username,
-                userId: this.userAccount.userId
-            };
-                console.log(userFriends);
-                databaseService.addMemberToFriends(userFriends).then( resp => {
-                    console.log(resp.statusText)
-                    if(resp.status == 200){
-                        this.memberAdded = true;
-                    }else {
-                        this.memberAdded = false;
-                    }
-                })
+            databaseService.createBook(this.book).then(resp =>{
+                if(resp.status == 200) {
+                    this.$router.push({
+                        name:'myBooks'
+                    })
+                }
+            });
+            //      const userFriends = {
+            //     username: this.userAccount.username,
+            //     userId: this.userAccount.userId
+            // };
+            //     console.log(userFriends);
+            //     databaseService.addMemberToFriends(userFriends).then( resp => {
+            //         console.log(resp.statusText)
+            //         if(resp.status == 200){
+            //             this.memberAdded = true;
+            //         }else {
+            //             this.memberAdded = false;
+            //         }
+            //     })
             }
             
         },
@@ -245,7 +252,8 @@ export default {
 
 #back{
     display: flex;
-    margin-left: 468px;
+    margin-left:auto;
+    margin-right: auto;
     margin-top: 10px;
     width: 200px;
     text-decoration: none;
@@ -277,20 +285,22 @@ p{
     font-size: 20px;
 }
 #account-name{
-    margin-left: 35px;
+    margin-left: auto;
+    margin-right: auto;
     font-size: 20px
 }
 
 .form-element{
     padding: 10px;
-    margin: 0px
+    margin: 0px;
 }
 
 #submit{
     margin-top: 50px;
     width: 200px;
     margin: 0px;
-    margin-left: 462px
+    margin-left: auto;
+    margin-right: auto;
     /* margin-top: 200px; */
 }
 
@@ -331,13 +341,15 @@ p{
 form{
     display: flex;
     flex-direction: column;
-    padding: 5px
+    padding: 5px;
+   
 }
 body{
     background-color: rgb(245,245,220);
 }
 #all{
     background-color:rgb(245,245,220);  
+    
 }
 
 label{

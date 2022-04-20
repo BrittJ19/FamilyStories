@@ -67,7 +67,7 @@ export default new Vuex.Store({
       }
     ],
     friends: [{
-      username:'Thzachman',
+      username:'Thezachman',
     }],
     
 

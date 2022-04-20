@@ -10,10 +10,9 @@
   <div id="nav">
       <img id="logo" src="/offWhiteLogo.png">
       <img id="catchphrase" src="/logoText.png"> 
-      <!-- <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp; -->
-      <!-- <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> -->
+      
       <div id="left">
-        <!-- <img id="books" src="/books.png"> -->
+      
       <div id="innerNav">
         <div id="site-links">
         <router-link id="home" v-bind:to="{ name: 'login' }">Home </router-link>
@@ -27,14 +26,13 @@
  <main>
         <div id= "myfriends">
         <h1>My Friends</h1>
-        <!-- <new-books v-for="(disBook,index) in books" v-bind:key="index"/>  -->
-         <!-- <new-books v-for="disBook in book" v-bind:key="disBook.isbn"/>    -->
-  <div class ="">
+   
+  
     <div id='friends-list'>
     <friends-list/>
 </div>
-</div>
-  <new-books v-for="(friendo,index) in $store.state.friends" v-bind:key="index"
+
+  <new-friends v-for="(friendo,index) in $store.state.friends" v-bind:key="index"
   v-bind:friend="friendo"/>
    </div>
    <div id= "friend-form">
