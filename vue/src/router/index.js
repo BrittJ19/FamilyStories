@@ -101,7 +101,7 @@ const router = new Router({
       component: Troubleshoot
     },
     {
-      path:"/mybooks",
+      path:"/profile/:username/mybooks",
       name:"myBooks",
       component: MyBook
     },

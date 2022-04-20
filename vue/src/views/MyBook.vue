@@ -16,7 +16,7 @@
         <!-- <img id="books" src="/books.png"> -->
       <div id="innerNav">
         <div id="site-links">
-        <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
+        <router-link id="home" v-bind:to="{ name: 'login' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
         <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
         </div> 
@@ -26,6 +26,7 @@
      <main>
         <div id= "myBooks">
         <h1>My Books</h1>
+        
         <!-- <new-books v-for="(disBook,index) in books" v-bind:key="index"/>  -->
          <!-- <new-books v-for="disBook in book" v-bind:key="disBook.isbn"/>    -->
   </div>
@@ -157,13 +158,18 @@ export default {
  #myBooks{
    display: flex;
    flex-grow: 1;
+   flex-direction: row;
    background-color: rgb(150,165,60);
    color: rgb(245,245,220);
    font-family: 'abeatbyKai', sans-serif;
+   height: 50px;
    
 }
 h1{
-  margin-left: 900px;
+  flex-grow: 1;
+  width: 100vh;
+  margin: 0px;
+  justify-content: center;
  
 }
 main{
@@ -183,9 +189,6 @@ main{
   margin-right: 40px;
   padding: 40px;
   justify-content: space-evenly;
-}
-.new-books:hover{
-
 }
 #bookForm{
   text-align: center;
