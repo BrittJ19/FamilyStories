@@ -27,6 +27,7 @@ export default new Vuex.Store({
     NewFamilyAccount: '',
     familyAccounts: [],
     familyMembers: [],
+    friends: []
   },
     books: [
       {
@@ -66,9 +67,7 @@ export default new Vuex.Store({
       }
     ],
     friends: [{
-      username:'',
-      user_Id:'',
-      favorite_book:''
+      username:'Thzachman',
     }],
     
 

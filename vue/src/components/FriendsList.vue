@@ -3,13 +3,9 @@
      <div class= "friend-username">
           {{ book.title }}
       </div>
-    <img v-if="book.isbn" v-bind:src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" />
     <div class="friend-userId">
-        {{ frined.user_id }}
+        {{ friend.user_id }}
     </div> 
-    <div class="friend-favorite-book">
-        {{ friend.favorite_book }}
-    </div>
   </div>
 </template>
 
@@ -22,6 +18,10 @@ export default {
 </script>
 
 <style scoped>
-
+#new-friends{
+    display: inline-flex;
+    flex-direction: column;
+    margin-right: 50%;
+}
 </style>
 

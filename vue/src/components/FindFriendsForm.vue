@@ -1,11 +1,5 @@
 <template id="all">
   <div id="page">
-         
-      <div id="banner">
-
-      <router-link v-bind:to="{ name: 'userProfile' }"><img id="logo" src="/offWhiteLogo.png"></router-link>
-      <h1>Fellow Bookworms</h1>
-      </div>
      
     <main>
       <div id="accountForm">
@@ -67,10 +61,8 @@ export default {
     created() {
         databaseService.getUsers().then( resp => {
             this.users = resp.data;
-        databaseService.getFamilyAccounts(this.$store.state.user.id).then(resp => {
-            this.familyAccounts = resp.data;
+        
         })    
-        })
     },
     methods: {
        
@@ -115,8 +107,8 @@ export default {
             },
             addFriends() {
                  const userFriends = {
-                familyName: this.familyAccount.familyName,
-                userId: this.familyAccount.userId
+                username: this.userAccount.username,
+                userId: this.userAccount.userId
             };
                 console.log(userFriends);
                 databaseService.addMemberToFriends(userFriends).then( resp => {
@@ -251,10 +243,6 @@ export default {
 @import url('http://fonts.cdnfonts.com/css/abeatbykai');
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Montserrat+Alternates:wght@100&display=swap');
 
-#all{
-    display: flexbox;
-}
-
 #back{
     display: flex;
     margin-left: 468px;
@@ -303,7 +291,7 @@ p{
     width: 200px;
     margin: 0px;
     margin-left: 462px
-   
+    /* margin-top: 200px; */
 }
 
 #newUser{
@@ -409,6 +397,22 @@ h1{
 #logo{
     display: flex;
     justify-content: center;
+}
+
+button{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-self: center;
+    margin: 5px;
+    background-color: rgb(255,117,24);
+    padding: 10px
+}
+
+.actions{
+    display: flex;
+    justify-content: center;
+    height: 0px
 }
 
 
