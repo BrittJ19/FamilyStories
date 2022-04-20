@@ -49,16 +49,6 @@
                    <td id="finish">{{log.completed}}</td>
                    <td id="notes">{{log.notes}}</td>     
                                
-                <td id="date">{{log.dateTime}}</td>
-                  <td id="username" style="width: 20px">{{ log.username }}</td>
-                  <td id="accountType" style="width: 20px">{{log.accountType}}</td>
-                   <td id="title" style="width: 20px">{{log.bookTitle}}</td>
-                   <td id="format" style="width: 20px">{{log.format}}</td>
-                   <td id="time" style="width: 20px">{{log.timeReading}}</td>
-                   <td id="pages" style="width: 20px">{{log.pagesRead}}</td>
-                   <td id="finish" style="width: 20px">{{log.completed}}</td>
-                   <td id="notes" style="width: 20px">{{log.notes}}</td>     
-                   <!-- <button class="btn btn-xs btn-danger" @click="deleteEvent(event)">Delete</button>             -->
                   <!-- <td id="books">{{family.booksCompleted}}</td>
                   <td id="pages">{{family.pagesRead}}</td>
                   <td id="money">$ {{family.moneyEarned}}</td> -->
@@ -130,13 +120,26 @@ export default {
  }
 
 
-/* table {
+table {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   font-family: Arial;
   border: 5px solid black;
-  margin: 10px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100vh;
+  
+}
+thead{
+  text-align: center;
+  flex-grow: 1;
+  /* display: flex;
+  align-self: center;
+  align-content: space-evenly; */
 }
 th {
-  text-align: left;
+  text-align: center;
   text-decoration: underline;
   border-left: 1px solid black;
   margin: 10px;
@@ -146,9 +149,9 @@ td{
 }
 
 tbody {
-  text-align: left;
+  text-align: center;
   margin: 10px;
-} */
+}
 #logo{
    width: 180px;
    height: 120px;
