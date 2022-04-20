@@ -9,9 +9,16 @@ import Family from '../views/Family.vue'
 import FamilyAccounts from '../views/FamilyAccounts.vue'
 import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
+<<<<<<< HEAD
 import Profile from '../views/Profile'
 import Troubleshoot from '../views/Troubleshoot'
 import MyBook from '../views/MyBook'
+=======
+import Profile from '../views/Profile.vue'
+import Troubleshoot from '../views/Troubleshoot.vue'
+// import RecordReadingActivity from '../components/RecordReadingActivity'
+import MyBook from '../views/MyBook.vue'
+>>>>>>> 31df02df7f476203ccf77bfe10d2bcb021ae3580
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
@@ -143,11 +150,7 @@ const router = new Router({
     name: "favoriteBooks",
     component: BookSlider
     },
-    // {
-    // path:"/reading/record",
-    // name:"readingRecord",
-    // component: RecordReadingActivity
-    // },
+  
     {
     path:"/reading/log",
     name:"readingLog",
@@ -158,11 +161,14 @@ const router = new Router({
       name:"readingActivity",
       component: RecordReadingActivity
     }
+<<<<<<< HEAD
     // {
     //   path:"/mybooks/addbook",
     //   name:"addbook",
     //   component: MyBook
     // }
+=======
+>>>>>>> 31df02df7f476203ccf77bfe10d2bcb021ae3580
 
   ]
 })

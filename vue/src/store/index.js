@@ -102,11 +102,18 @@ export default new Vuex.Store({
     },
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
+<<<<<<< HEAD
     },
      ADD_BOOK(state, book){
       state.books.push(book);
      } 
   },
+=======
+    // ADD_BOOK(state, book){
+    //   state.books.push(book);
+    // }
+  }},
+>>>>>>> 31df02df7f476203ccf77bfe10d2bcb021ae3580
   actions: {},
   modules: {},
   strict: true
