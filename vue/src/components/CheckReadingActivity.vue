@@ -47,7 +47,7 @@
                    <td id="pages">{{log.pagesRead}}</td>
                    <td id="finish">{{log.completed}}</td>
                    <td id="notes">{{log.notes}}</td>     
-                   <button class="btn btn-xs btn-danger" @click="deleteEvent(event)">Delete</button>            
+                               
                   <!-- <td id="books">{{family.booksCompleted}}</td>
                   <td id="pages">{{family.pagesRead}}</td>
                   <td id="money">$ {{family.moneyEarned}}</td> -->
@@ -95,7 +95,6 @@ td{
 
 tbody {
   text-align: left;
-  border-bottom: 1px solid black;
   margin: 10px;
 }
 #logo{
