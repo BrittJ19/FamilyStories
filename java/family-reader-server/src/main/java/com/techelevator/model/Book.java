@@ -2,28 +2,45 @@ package com.techelevator.model;
 
 public class Book {
 
+    private int bookId;
     private String title;
     private String author;
     private String isbn;
-    private String genre;
-    private int pagination;
 
-    public String getGenre() {
-        return genre;
+
+
+
+    public long getBookId() {
+        return bookId;
     }
 
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setBookId(int bookId) {
+        this.bookId = bookId;
     }
 
-    public int getPagination() {
-        return pagination;
+    public String getTitle() {
+        return title;
     }
 
-    public void setPagination(int pagination) {
-        this.pagination = pagination;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
 //<<<<<<< HEAD
 //    public String getTitle() {
 //        return title;

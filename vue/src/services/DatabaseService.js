@@ -76,6 +76,12 @@ export default{
     },
     getReadingLogs(userId) {
         return database.get(`reading/${userId}/logs`)
+    },
+    createBook(userId,AddBookForm) {
+        return database.post(`/${userId}/mybooks/addbook`, AddBookForm)
+    },
+    getBook(userId) {
+        return database.get(`/${userId}/mybooks`)
     }
 
 
