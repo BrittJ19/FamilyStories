@@ -105,7 +105,6 @@ export default new Vuex.Store({
     },
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
-
     },
     ADD_BOOK(state,book){
       state.books.push(book);
@@ -114,7 +113,6 @@ export default new Vuex.Store({
       state.friends.push(user);
     }
   },
-
   actions: {},
   modules: {},
   strict: true

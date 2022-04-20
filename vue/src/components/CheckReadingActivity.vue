@@ -40,6 +40,15 @@
           </thead>
           <tbody>
               <tr v-for="log in logs" v-bind:key="log.recordId">
+                  <td id="username">{{ log.username }}</td>
+                  <td id="accountType">{{log.accountType}}</td>
+                   <td id="title">{{log.bookTitle}}</td>
+                   <td id="format">{{log.format}}</td>
+                   <td id="time">{{log.timeReading}}</td>
+                   <td id="pages">{{log.pagesRead}}</td>
+                   <td id="finish">{{log.completed}}</td>
+                   <td id="notes">{{log.notes}}</td>     
+                               
                 <td id="date">{{log.dateTime}}</td>
                   <td id="username" style="width: 20px">{{ log.username }}</td>
                   <td id="accountType" style="width: 20px">{{log.accountType}}</td>
@@ -138,7 +147,6 @@ td{
 
 tbody {
   text-align: left;
-  border-bottom: 1px solid black;
   margin: 10px;
 } */
 #logo{

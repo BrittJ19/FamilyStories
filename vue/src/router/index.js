@@ -9,10 +9,9 @@ import Family from '../views/Family.vue'
 import FamilyAccounts from '../views/FamilyAccounts.vue'
 import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
-import Profile from '../views/Profile.vue'
-import Troubleshoot from '../views/Troubleshoot.vue'
-// import RecordReadingActivity from '../components/RecordReadingActivity'
-import MyBook from '../views/MyBook.vue'
+import Profile from '../views/Profile'
+import Troubleshoot from '../views/Troubleshoot'
+import MyBook from '../views/MyBook'
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
@@ -149,6 +148,11 @@ const router = new Router({
     name:"readingRecord",
     component: RecordReadingActivity
     }
+    // {
+    //   path:"/mybooks/addbook",
+    //   name:"addbook",
+    //   component: MyBook
+    // }
 
   ]
 })

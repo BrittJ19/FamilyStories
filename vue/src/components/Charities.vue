@@ -8,7 +8,7 @@
         <img id="catchphrase" src="/logoText.png">  
     </div>
         
-      <div id="innerNav">
+      <!-- <div id="innerNav"> -->
         <div id="site-links">
           <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
           <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
@@ -28,7 +28,7 @@
       
       </div>
     </main>   
-  </div>  
+  <!-- </div>   -->
   </div>
 </template>
 
@@ -73,11 +73,33 @@ export default {
    font-size: 25pt;
    color: rgb(245,245,220);
  }
+ #site-links{
+  display: flex;
+  flex-grow: 1;
+  padding-top: none;
+  text-decoration: none;
+  justify-content: flex-end;
+  align-content: flex-end;
+  /* justify-content: space-evenly; */
+  font-family: 'abeatbyKai', sans-serif; 
+}
  #Charities{
-  display:flex;
-  /* flex-direction: column; */
+  /* display:flex; */
+  flex-direction: column;
   background-color: rgb(245,245,220);
   text-align: center;
+  /* display: grid; */
+
+    /* width: 100vh; */
+
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    grid-template-areas: 
+    "logo1 text text ."
+    "logo2 text text ."
+    "logo3 text text ."
+    "logo4 text text ."
+    ; */
 
    
  }
