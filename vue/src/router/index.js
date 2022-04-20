@@ -122,7 +122,7 @@ const router = new Router({
       component: addUser
     },
     {
-      path:"/friends",
+      path:"/profile/:username/friends",
       name:"friends",
       component: FindFriendsForm
     },

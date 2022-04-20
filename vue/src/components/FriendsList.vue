@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style scoped>
-#new-friends{
+.new-friends{
     display: inline-flex;
     flex-direction: column;
     margin-right: 50%;
