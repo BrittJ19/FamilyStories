@@ -8,14 +8,14 @@
         <img id="catchphrase" src="/logoText.png">  
     </div>
         
-      <!-- <div id="innerNav"> -->
+      <div id="innerNav">
         <div id="site-links">
           <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
           <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
           <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
         </div> 
       <div id="promo">
-          <h3>Charites</h3>
+          <h3>Charities</h3>
       <!-- <router-link id="link" :to="{ name: 'register' }"><p>Check Activity</p></router-link> -->
         </div>
     </div>
@@ -28,7 +28,7 @@
       
       </div>
     </main>   
-  <!-- </div>   -->
+  </div>  
   </div>
 </template>
 
@@ -62,7 +62,7 @@ export default {
  
  #promo{
    display: flex;
-   flex-grow: 1;
+   /* flex-grow: 1; */
    background-color: rgb(150,165,60);
    justify-self: center;
    justify-content: center;
