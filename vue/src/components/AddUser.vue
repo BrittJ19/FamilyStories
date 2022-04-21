@@ -331,7 +331,10 @@ h1{
     align-self: center;
     align-content: center;
     align-items: stretch;
-    margin-left: 400px
+    margin-left: 400px;
+     -webkit-box-shadow: 0px 0px 20px black;
+    -moz-box-shadow:    0px 0px 20px black;
+    box-shadow:         0px 0px 20px black;
 }
 
 .form-element{

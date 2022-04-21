@@ -115,7 +115,7 @@ public class JdbcRecordDao implements RecordDao {
     @Override
     public List<ReadingLogList> getReadingActivity(int userId) {
         List<ReadingLogList> readingActivity = new ArrayList<>();
-        String sql = "SELECT record_id, rf.user_id, rf.account_type, book_title, format, time, rf.pages_read, rf.completed, notes, username FROM reading_record rf JOIN " +
+        String sql = "SELECT record_id, date_time, rf.user_id, rf.account_type, book_title, format, time, rf.pages_read, rf.completed, notes, username FROM reading_record rf JOIN " +
         "users u ON rf.user_id = u.user_id WHERE rf.user_id = ?;";
 
         SqlRowSet rowSet = jdbcTemplate.queryForRowSet(sql, userId);
@@ -169,6 +169,7 @@ public class JdbcRecordDao implements RecordDao {
         rr.setNotes(rs.getString("notes"));
         rr.setUsername(rs.getString("username"));
         rr.setDateTime(rs.getTimestamp("date_time"));
+        rr.setAccountType(rs.getString("account_type"));
 
 
         return rr;
