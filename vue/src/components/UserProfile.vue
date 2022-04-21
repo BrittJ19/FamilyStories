@@ -15,7 +15,7 @@
               <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
               <router-link id="log" v-bind:to="{ path: '/checkactivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
               <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
-              <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
+               <router-link id="friends" v-bind:to="{name:'friends' }"><li>My Friends<i id="f" class="fa-solid fa-user-group"></i></li></router-link>
           </ul>
       </div>
       <main>
@@ -213,7 +213,7 @@ main{
     font-family: 'abeatbyKai', sans-serif;
 }
 
-#family, #log, #books{
+#family, #log, #books, #friends{
     text-decoration: none;
     color: rgb(245,245,220);
 }

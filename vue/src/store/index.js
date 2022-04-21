@@ -27,6 +27,8 @@ export default new Vuex.Store({
     NewFamilyAccount: '',
     familyAccounts: [],
     familyMembers: [],
+    friends: []
+  },
     books: [
       {
         title: "Misery",
@@ -63,9 +65,10 @@ export default new Vuex.Store({
         author:"J.K Rowling",
         isbn: "9780545582995" 
       }
-    ]
-  },
-    
+    ],
+    friends: [{
+      username:'Thezachman',
+    }],
     
 
   mutations: {
@@ -103,9 +106,12 @@ export default new Vuex.Store({
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
     },
-     ADD_BOOK(state, book){
+    ADD_BOOK(state,book){
       state.books.push(book);
-     } 
+    },
+    ADD_FRIEND(state, user) {
+      state.friends.push(user);
+    }
   },
   actions: {},
   modules: {},
