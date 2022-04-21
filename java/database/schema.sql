@@ -96,22 +96,25 @@ CREATE TABLE reading_record (
 	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
 
+CREATE TABLE friends (
+    friend_id serial NOT NULL,
+	nickname varchar (50),
+    username varchar NOT NULL,
+	CONSTRAINT PK_friends PRIMARY KEY (friend_id),
+	CONSTRAINT FK_users FOREIGN KEY (username) REFERENCES users(username)
+);
+
 CREATE TABLE users_friends (
 user_id int NOT NULL,
-username UNIQUE NOT NULL,
-nickname varchar (50) NOT NULL,
+username varchar NOT NULL,
+friend_id int NOT NULL,
 CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id),
-CONSTRAINT FK_users FOREIGN KEY (username) REFERENCES users(username)
+
 CONSTRAINT FK_friends FOREIGN KEY (friend_id) REFERENCES friends(friend_id)
 );
 
-CREATE TABLE friends (
-    friend_id serial NOT NULL,
-	nickname varchar (50) NOT NULL,
 
-	CONSTRAINT PK_friends PRIMARY KEY (friend_id)
-	CONSTRAINT PK_friends PRIMARY KEY (nickname)
-);
+
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
 

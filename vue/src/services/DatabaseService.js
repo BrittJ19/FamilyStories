@@ -84,6 +84,12 @@ export default{
     },
     getBook(userId) {
         return database.get(`/${userId}/mybooks`)
+    },
+    createFriend(userId, FindFriendForm){
+        return database.post(` /${userId}/friends`, FindFriendForm)
+    },
+    getFriendsList(userId){
+        return database.get(`/${userId}/myFriends`)
     }
 
 

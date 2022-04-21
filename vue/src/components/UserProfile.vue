@@ -213,7 +213,7 @@ main{
     font-family: 'abeatbyKai', sans-serif;
 }
 
-#family, #log, #books{
+#family, #log, #books, #friends{
     text-decoration: none;
     color: rgb(245,245,220);
 }

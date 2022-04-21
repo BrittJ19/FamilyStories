@@ -3,12 +3,13 @@ package com.techelevator.dao;
 import com.techelevator.model.*;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-
-public class JdbcFriendDao {
+@Component
+public class JdbcFriendDao implements FriendDao {
     private final JdbcTemplate jdbcTemplate;
 
     public JdbcFriendDao(JdbcTemplate jdbcTemplate) {
@@ -19,21 +20,23 @@ public class JdbcFriendDao {
     public boolean createFriend(int userId, FindFriendForm form) {
 
         try{
-            String sql = "INSERT INTO friends (nickname) " +
-                    "VALUES (?)";
+            String sql = "INSERT INTO friends (nickname,username) VALUES (?,?);";
 
-            jdbcTemplate.update(sql ,form.getNickname());
+            jdbcTemplate.update(sql ,form.getUsername());
 
-            sql = "INSERT INTO users_friends (friend_id, user_id) VALUES ((SELECT friend_id FROM friends WHERE nickname = ?),?)";
+            sql ="INSERT INTO users_friends (friend_id, user_id, username) VALUES ((SELECT friend_id FROM friends WHERE username = ?),(select user_id from users where username = ? ),\n" +
+                    "(SELECT username FROM friends WHERE username = ?));";
 
-            jdbcTemplate.update(sql, form.getNickname(), userId);
+            jdbcTemplate.update(sql, form.getUsername());
         } catch (Exception ex) {
             return false;
         }
         return true;
     }
 
-    public List<Friend> getFriend(int userId) {
+
+
+    public List<Friend> getFriendList(int userId) {
         Friend friend = null;
 
         List<Friend> friends = new ArrayList<>();
@@ -63,7 +66,8 @@ public class JdbcFriendDao {
 
       friend.setFriendId(rowSet.getInt("friend_id"));
         friend.setNickname(rowSet.getString("nickname"));
-
+        friend.setUserId(rowSet.getString("user_id"));
+        friend.setUsername(rowSet.getString("username"));
 
         return friend;
     }

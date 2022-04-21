@@ -1,10 +1,10 @@
 <template>
    <div class='new-friends'>
      <div class= "friend-username">
-          {{ book.title }}
+          {{ friends.nickname }}
       </div>
     <div class="friend-userId">
-        {{ friend.user_id }}
+        {{ friends.user_id }}
     </div> 
   </div>
 </template>
@@ -15,6 +15,7 @@ export default {
     name:'new-friend',
     props:["friend"]
 }
+
 </script>
 
 <style scoped>

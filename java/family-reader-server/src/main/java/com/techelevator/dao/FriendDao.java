@@ -8,9 +8,11 @@ import com.techelevator.model.Friend;
 import java.util.List;
 
 public interface FriendDao {
+
+
+    List<Friend> getFriendList(int friendId);
+
     boolean createFriend(int userId, FindFriendForm form);
 
 
-
-    List<Friend> getFriend (int userId);
 }

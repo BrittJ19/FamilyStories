@@ -6,7 +6,7 @@
         
          
       <form v-on:submit.prevent="searchForUsers">
-          <!-- v-on:submit.prevent="addToFamily" -->
+        
           <div id="searchBox" class="form-element">
               <label id="account-name" for="account-name"> Search user by username : </label>
               <input id="name-text" type="search" v-model="text"/>
@@ -48,6 +48,7 @@ export default {
             text1: '',
             search: '',
             users: [],
+            selectedFriend:'',
             text: '',
             searchResults: [],
             searchMessage:"",
@@ -92,8 +93,8 @@ export default {
                 this.username = userValue;
                 console.log(userValue);
                  databaseService.getUserByUsername(this.username).then(resp => {
-                    this.familyAccount.userId = resp.data;
-                    console.log(resp)
+                    this.userAccount.userId = resp.data;
+                    this.selectedFriend= resp.data;
                 })
 
             },
@@ -101,15 +102,15 @@ export default {
                 var selectAccount = document.getElementById('accountNames');
                 var accountValue = selectAccount.options[selectAccount.selectedIndex].text;
                 alert(accountValue);
-                this.familyAccount.familyName = accountValue;
+                this.userAccount.username = accountValue;
                 console.log(accountValue)
 
             },
             addFriends() {
-            databaseService.createBook(this.book).then(resp =>{
+            databaseService.createFriend(this.selectedFriend.userId).then(resp =>{
                 if(resp.status == 200) {
                     this.$router.push({
-                        name:'myBooks'
+                        name:'friends'
                     })
                 }
             });
