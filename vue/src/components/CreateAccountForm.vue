@@ -7,13 +7,13 @@
 <link href="https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Montserrat+Alternates:wght@100&display=swap" rel="stylesheet">
 <link href="http://fonts.cdnfonts.com/css/abeatbykai" rel="stylesheet">             
 </head>
-  <div id="nav">
-  <div id="register" class="text-center">
+  <div id="navC">
+  <div id="reg" class="text-center">
       <div id="heading">
       <h1>CREATE NEW ACCOUNT</h1>
       <p>{{message}}</p>
       </div>
-    <form class="form-register" @submit.prevent="register">
+    <form class="fr" @submit.prevent="register">
       <!-- <h1 class="h3 mb-3 font-weight-normal">Create Account</h1> -->
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
@@ -22,7 +22,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="input"
         placeholder="Username"
         v-model="user.username"
         required
@@ -32,7 +32,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="input"
         placeholder="Password"
         v-model="user.password"
         required
@@ -40,7 +40,7 @@
       <input
         type="password"
         id="confirmPassword"
-        class="form-control"
+        class="input"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
@@ -55,7 +55,7 @@
           </div> 
       <!-- <router-link id="account" :to="{ name: 'login' }">Have an account?</router-link> -->
       <div id="submit-button">
-      <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit">
+      <button id="sub" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
       </div>
@@ -129,7 +129,7 @@ body{
     background-size: 100vh;
     margin:0px
 }
-#register{
+#reg{
     display: flex;
     flex-direction: column;
     background-color: rgb(150,165,60);
@@ -141,7 +141,7 @@ body{
     border-radius: 5%;
     
 }
-form{
+.fr{
     padding-top: 0%;
     display: flex;
     flex-direction: column;
@@ -153,12 +153,12 @@ form{
     padding: 15px
 }
 
-input{
+.input{
     margin: 20px;
     height: 30px;
     border-radius: 5%;
 }
-#submit{
+#sub{
     align-self: center;
     margin-left: 60px;
 }
@@ -203,10 +203,8 @@ button{
   display: flex;
   align-self: center;
 }
-#nav{
-   -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);
-    -moz-box-shadow:    0px 20px 20px rgba(50, 50, 50, 0.75);
-    box-shadow:         0px 20px 20px rgba(50, 50, 50, 0.75);
+#navC{
+  
 }
 
 

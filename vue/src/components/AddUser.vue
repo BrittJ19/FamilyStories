@@ -168,6 +168,7 @@ export default {
                         this.memberAdded = false;
                     }
                 })
+                 this.$router.push({path:"/family"})
             }
             
         },

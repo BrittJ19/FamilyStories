@@ -153,7 +153,7 @@ public class JdbcFamilyDao implements FamilyDao{
     }
 
     @Override
-    public int getFamilyMoneyEarned(int familyId) {
+    public double getFamilyMoneyEarned(int familyId) {
         int sum = 0;
         String sql = "SELECT * FROM family WHERE family_id = ?";
 
@@ -167,7 +167,7 @@ public class JdbcFamilyDao implements FamilyDao{
     }
 
     @Override
-    public int getFamilyMoneyDonated(int familyId) {
+    public double getFamilyMoneyDonated(int familyId) {
         int sum = 0;
         String sql = "SELECT * FROM family WHERE family_id = ?";
 

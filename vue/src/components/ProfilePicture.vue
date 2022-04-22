@@ -4,8 +4,8 @@
     type="file" 
     @change="onFileSelected"
     ref="fileInput">
-    <button @click="$refs.fileInput.click()">Upload Profile Picture</button>
-    <button @click="onUpload">Upload</button>
+    <button class="upload" @click="$refs.fileInput.click()">Upload Profile Picture</button>
+    <button class="upload" @click="onUpload">Upload</button>
 </div>
   
 </template>
@@ -38,6 +38,7 @@ button{
     font-family: 'abeatbyKai', sans-serif;
     margin: 10px;
     margin-right: 0px;
+    margin-left: 22px;
     padding: 10px;
     color: rgb(245,245,220);
      -webkit-box-shadow: 0px 20px 20px rgba(50, 50, 50, 0.75);

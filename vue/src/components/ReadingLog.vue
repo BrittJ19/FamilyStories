@@ -140,7 +140,10 @@ export default {
                     if(response.data.username == this.$store.state.user.username){
                     this.userData = response.data}
                     if(response.data.accountType == 'child'){
-                        this.childAccounts.push(response.data)
+                         if(!this.childAccounts.includes(response.data)){
+                            this.childAccounts.push(response.data)
+
+                        }
                     }
                 })
             })

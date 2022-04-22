@@ -28,9 +28,9 @@ public interface FamilyDao {
 
     int getFamilyBooksCompleted(int familyId);
 
-    int getFamilyMoneyEarned(int familyId);
+    double getFamilyMoneyEarned(int familyId);
 
-    int getFamilyMoneyDonated(int familyId);
+    double getFamilyMoneyDonated(int familyId);
 
 //    boolean addFamilyMember(String username);
 }

@@ -22,6 +22,7 @@ import createAccount from '../views/CreateAccount.vue'
 import BookSlider from '../components/BookSlider.vue'
 import RecordReadingActivity from '../views/RecordReadingActivity.vue'
 import ReadingLog from '../views/ReadingLog.vue'
+import Redeem from '../views/Redeem.vue'
 
 
 
@@ -154,6 +155,11 @@ const router = new Router({
       path:"/reading/activity",
       name:"readingActivity",
       component: RecordReadingActivity
+    },
+    {
+      path: "/prize/donate",
+      name: "donate",
+      component: Redeem
     }
 
   ]

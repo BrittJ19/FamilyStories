@@ -17,9 +17,9 @@
         <!-- <img id="books" src="/books.png"> -->
       <div id="innerNav">
         <div id="site-links">
-        <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
+        <router-link id="home" v-bind:to="{ name: 'login' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
-        <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
+        <router-link id="charitiez" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
         </div> 
  </div>
   <div id="login" class="text-center">
@@ -119,6 +119,7 @@ export default {
 <style scoped>
 @import url('http://fonts.cdnfonts.com/css/abeatbykai');
 @import url('https://fonts.googleapis.com/css2?family=Amaranth:wght@700&family=Montserrat+Alternates:wght@100&display=swap');
+
 
 #options{
   display: flex;
@@ -367,7 +368,7 @@ input{
   font-size: 25px;
 }
 
-#charities{
+#charitiez{
   text-decoration: none;
   color: rgb(245,245,220);
   font-size: 20px;

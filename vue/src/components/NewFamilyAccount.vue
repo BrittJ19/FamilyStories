@@ -60,7 +60,7 @@ export default {
                 userId: this.$store.state.user.id
             };
             databaseService.createFamily(familyForm).then( resp => {
-                if (resp.status == 200) {
+                if (resp.status === true) {
                 this.$store.commit('SET_NEW_FAMILY', resp.data);
                 this.isLoading = false;
                 this.message = "Your new Family Account has been created!"
