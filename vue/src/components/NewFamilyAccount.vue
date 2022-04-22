@@ -49,7 +49,8 @@ export default {
             },
             message: "",
             isLoading: '',
-            text1: ''
+            text1: '',
+            trueOrFalse: ''
         }
     },
     methods: {
@@ -60,8 +61,9 @@ export default {
                 userId: this.$store.state.user.id
             };
             databaseService.createFamily(familyForm).then( resp => {
-                if (resp.status === true) {
+                if (resp.data === true) {
                 this.$store.commit('SET_NEW_FAMILY', resp.data);
+                this.trueOrFalse = resp.data
                 this.isLoading = false;
                 this.message = "Your new Family Account has been created!"
             } else {
@@ -114,7 +116,9 @@ h1{
 }
 #back{
     display: flex;
-    margin-left: 490px;
+    /* margin-left: 490px; */
+      margin-left: auto;
+    margin-right: auto;
     width: 175px;
     text-decoration: none;
 }

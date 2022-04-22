@@ -1,16 +1,17 @@
 <template>
   <div>
    
-         <check-reading-activity/>
+        
+         <reading-activity/>
 
 
   </div>
 </template>
 
 <script>
-import CheckReadingActivity from '../components/CheckReadingActivity.vue'
+import ReadingActivity from '../components/ReadingActivity.vue'
 export default {
-  components: { CheckReadingActivity },
+  components: { ReadingActivity },
 
   // methods: delete: function(log) {
   //               this.events.log(this.event);

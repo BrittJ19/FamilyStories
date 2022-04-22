@@ -22,7 +22,7 @@
       <input
         type="text"
         id="username"
-        class="input"
+        class="in"
         placeholder="Username"
         v-model="user.username"
         required
@@ -32,7 +32,7 @@
       <input
         type="password"
         id="password"
-        class="input"
+        class="in"
         placeholder="Password"
         v-model="user.password"
         required
@@ -40,14 +40,14 @@
       <input
         type="password"
         id="confirmPassword"
-        class="input"
+        class="in"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
       />
        <div class="form-element">
-              <label for="account-type"> Account Type:</label>
-                  <select id="selections" v-model="user.accountType">
+              <label for="account-type" id="aType"> Account Type:</label>
+                  <select id="types" v-model="user.accountType">
                       <option value="parent">Adult</option>
                       <option value="child">Child</option>
                       <option value="other">Other</option>
@@ -147,20 +147,23 @@ body{
     flex-direction: column;
     justify-content: center;
     align-self: center;
+    width: 30%
     /* padding: 50px; */
 }
 .sr-only{
     padding: 15px
 }
 
-.input{
+.in{
     margin: 20px;
     height: 30px;
     border-radius: 5%;
 }
 #sub{
     align-self: center;
-    margin-left: 60px;
+      margin-left: auto;
+    margin-right: auto;
+   
 }
 label{
     margin-left: 35px;
@@ -188,16 +191,25 @@ h1{
   align-self: center;
   justify-content: center;
   align-content: center;
-  flex-grow: 1;
-  width: 100vh
+   margin-left: auto;
+    margin-right: auto;
+    width: 130px
 
 }
 .form-element{
   display: flex;
   flex-direction: column;
 }
-#selections{
+#types{
   height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 355px
+}
+#aType{
+  padding: 5px;
+    margin-left: auto;
+    margin-right: auto;
 }
 button{
   display: flex;

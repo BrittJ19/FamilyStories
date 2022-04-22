@@ -6,7 +6,7 @@
         <img id="catchphrase" src="/logoText.png"> 
         <div id="innerNav">
         <div id="site-links">
-        <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
+        <router-link id="home" v-bind:to="{ name: 'userProfile' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
         <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
         <router-link id="logout" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Logout</router-link>

@@ -21,13 +21,8 @@
              <router-link id="books" v-bind:to="{name:'myBooks'}"><li>My Books <i id="b" class="fa-solid fa-book-bookmark"></i> </li></router-link> 
               <router-link id="log" v-bind:to="{ name: 'readingLog' }"><li>Log Reading <i id="l" class="fa-solid fa-book-open"></i></li></router-link>
               <router-link id="log" v-bind:to="{ path: '/checkactivity' }"><li>Reading Activity <i id="ra" class="fa-solid fa-book-open-reader"></i></li></router-link>
-<<<<<<< HEAD
-              <router-link id="family" v-bind:to="{ name: 'donate' }"><li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li></router-link>
-              <li>Friends <i id="f" class="fa-solid fa-user-group"></i></li>
-=======
-              <li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li>
-               <router-link id="friends" v-bind:to="{name:'friends' }"><li>My Friends<i id="f" class="fa-solid fa-user-group"></i></li></router-link>
->>>>>>> 067e29e2feaf66797ea49a82fb93a27ccb06c543
+              <router-link id="books" v-bind:to="{name:'friends'}"><li>Friends <i id="f" class="fa-solid fa-user-group"></i></li></router-link>
+              <router-link id="books" v-bind:to="{name:'donate'}"><li>Prizes <i id="p" class="fa-solid fa-trophy"></i></li></router-link>
           </ul>
       </div>
       <main id="profileMain">
@@ -37,7 +32,7 @@
               <div id="headline">
           <div id="image">
               <span id="profile-image">
-                  <img id="avatar" src="/newAvatar2.png">
+                  <img id="avatar" src="/HatPic.png">
               </span>
               <profile-picture id="pp"/>
           </div>
@@ -54,7 +49,7 @@
               </div>
               <div id="moneyEarned">
                   <p id="char">Charity Money Earned</p>
-                  <h6>${{currentUser.moneyEarned}}</h6>
+                  <h6>${{Math.floor(currentUser.pagesRead / 500) * 5}}</h6>
               <i id="money" class="fa-solid fa-sack-dollar"></i>
               </div>
           </div>

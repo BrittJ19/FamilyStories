@@ -8,7 +8,7 @@
         <img id="catchphrase" src="/logoText.png">  
     </div>
         
-      <div id="innerNav">
+      <div id="inner">
         <div id="site-links">
           <router-link id="home" v-bind:to="{ name: 'home' }">Home </router-link>
           <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
@@ -23,11 +23,12 @@
       
       </div>   
   </div> 
-  
-  <main> 
-    <div id=Check>  
-     <table style="table-layout:fixed">
-          <thead style="display:table-header-group">
+<!--style="table-layout:fixed" -->
+<!-- style="display:table-header-group" -->
+  <main id="m"> 
+    <div id="name">  
+     <table id="table1">
+          <thead id="tHead">
               <th style="width: 20px">Date</th>
               <th style="width: 20px">Username</th>
               <th style="width: 20px">Account Type</th>
@@ -38,16 +39,16 @@
               <th style="width: 20px">Book Finished</th>
               <th style="width: 20px">Notes</th>
           </thead>
-          <tbody>
+          <tbody id="tBody">
               <tr v-for="log in logs" v-bind:key="log.recordId">
-                  <td id="username">{{ log.username }}</td>
-                  <td id="accountType">{{log.accountType}}</td>
-                   <td id="title">{{log.bookTitle}}</td>
-                   <td id="format">{{log.format}}</td>
-                   <td id="time">{{log.timeReading}}</td>
-                   <td id="pages">{{log.pagesRead}}</td>
-                   <td id="finish">{{log.completed}}</td>
-                   <td id="notes">{{log.notes}}</td>     
+                  <td id="username" class="rowz">{{ log.username }}</td>
+                  <td id="accountType" class="rowz">{{log.accountType}}</td>
+                   <td id="title" class="rowz">{{log.bookTitle}}</td>
+                   <td id="format" class="rowz">{{log.format}}</td>
+                   <td id="time" class="rowz">{{log.timeReading}}</td>
+                   <td id="pages1" class="rowz">{{log.pagesRead}}</td>
+                   <td id="finish" class="rowz">{{log.completed}}</td>
+                   <td id="notes" class="rowz">{{log.notes}}</td>     
                                
                   <!-- <td id="books">{{family.booksCompleted}}</td>
                   <td id="pages">{{family.pagesRead}}</td>
@@ -93,6 +94,67 @@ export default {
 </script>
 
 <style scoped>
+#m{
+    height: 80%;
+    padding: 40px
+}
+ tbody{
+     display: flex;
+     flex-direction: column;
+     flex-grow: 1;
+     width: 100vh;
+     justify-content: space-between;
+     align-content: space-between;
+     font-size: 20px;
+ }
+ #tBody{
+   display: flex;
+   align-content: center;
+   margin-left: 1400px
+ }
+ #table1{
+     display: flex;
+     flex-grow: 1;
+     width: 100%;
+     flex-direction: column;
+     justify-content: space-between;
+     justify-content: center;
+     align-items: center;
+      background-color: rgb(245,245,220);
+      text-align: center;
+     
+ }
+  tr{
+    display: flex;
+    width: 100vh;
+    justify-content: space-between;
+    padding-right: 200px
+     
+ }
+ #rowz{
+   display: flex;
+ }
+#name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center ;
+    align-items: center;
+    color: rgb(245,245,220);
+    font-family: 'abeatbyKai', sans-serif;
+      background-color: rgb(150,165,60);
+    padding: 20px;
+    padding-right: 0%;
+    padding-left: 0%;
+    margin-bottom: 40px;
+    margin-top: 40px;
+     -webkit-box-shadow: 10px 10px 10px 10px darkolivegreen;
+    -moz-box-shadow:    10px 10px 10px 10px darkolivegreen;
+    box-shadow:         10px 10px 10px 10px darkolivegreen;
+    border-radius: 5vh;
+    /* margin-left: 10px; */
+}
+
 
 #Check{
   display: flex;
@@ -117,6 +179,8 @@ export default {
  }
  tr{
    all: initial;
+   justify-content: center;
+   align-content: center;
  }
 
 
@@ -125,10 +189,10 @@ table {
   flex-direction: column;
   text-align: center;
   font-family: Arial;
-  border: 5px solid black;
   margin-left: auto;
   margin-right: auto;
-  width: 100vh;
+  width: 100%;
+  flex-grow: 1;
   
 }
 thead{
@@ -141,16 +205,22 @@ thead{
 th {
   text-align: center;
   text-decoration: underline;
-  border-left: 1px solid black;
   margin: 10px;
 }
 td{
-  border-left: 1px solid black;
+padding-left: 20px;
+padding-right: 20px;
+text-align: center;
 }
 
 tbody {
+  display: flex;
+  align-self: center;
   text-align: center;
+  justify-content: center;
+  align-content: center;
   margin: 10px;
+  width: 100%;
 }
 #logo{
    width: 180px;

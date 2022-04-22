@@ -16,9 +16,10 @@
         <!-- <img id="books" src="/books.png"> -->
       <div id="innerNav">
         <div id="site-links">
-        <router-link id="home" v-bind:to="{ name: 'login' }">Home </router-link>
+        <router-link id="home" v-bind:to="{ name: 'userProfile' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
         <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
+        <router-link id="logout" v-bind:to="{ name: 'userProfile' }" v-if="$store.state.token != ''">Logout</router-link>
         </div> 
         </div>
         </div>

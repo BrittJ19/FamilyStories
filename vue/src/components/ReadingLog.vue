@@ -44,8 +44,8 @@
        </div>
           <div id="minutes">
           <p id="minutes"> Minutes Reading</p>
-<input type="number" id="tentacles" name="minutes"
-       min="5" max="100" step="5" v-model.number="readingRecord.time">
+<input type="number" id="count" name="minutes"
+       min="5" max="5000" step="5" v-model.number="readingRecord.time">
        </div>
        <div class="form-element">
               <p> Are you finish with this book?</p>
@@ -208,7 +208,7 @@ export default {
       databaseService.addReadingRecord(this.readingRecord.userId, this.readingRecord).then(resp => {
           if (resp.status == 200) {
               this.$router.push({
-                  path: '/family'
+                  name: 'checkactivity'
               })
           }
       })
@@ -307,6 +307,8 @@ input{
 
 #results{
   background-color: rgb(245, 230, 185);
+  width: 40px;
+  height: 40px;
 }
 
 #selections{
@@ -314,7 +316,9 @@ input{
 }
 
 #submit{
+  display: flex;
     align-self: center;
+
 }
 label{
     margin-left: 35px;
@@ -325,7 +329,7 @@ label{
 h1{
     display: flex;
     flex-grow: 1;
-    margin-top: 15px;
+    margin-top: 30px;
     align-self: center;
     justify-content: center;
 }
@@ -345,6 +349,8 @@ h1{
   cursor: pointer;
   background-color: rgb(235, 145, 11);
   font-weight: bolder;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #submit:hover{

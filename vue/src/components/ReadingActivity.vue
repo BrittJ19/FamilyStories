@@ -1,8 +1,5 @@
 <template>
       <div class="container">
-          <div v-if= "this.isLoading === true">
-              <loading/>
-          </div>
       <nav>
         <router-link v-bind:to="{ name: 'userProfile' }"><img id="logo" src="/offWhiteLogo.png"></router-link>
         <img id="catchphrase" src="/logoText.png">   
@@ -11,7 +8,7 @@
         <router-link id="home" v-bind:to="{ name: 'login' }">Home </router-link>
         <router-link id="about" v-bind:to="{name: 'aboutUs'}"> About Us </router-link>
         <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
-        <router-link id="logout" v-bind:to="{ name: 'userProfile' }" v-if="$store.state.token != ''">Logout</router-link>
+        <router-link id="logout" v-bind:to="{ name: 'login' }" v-if="$store.state.token != ''">Logout</router-link>
         </div> 
  </div>
       </nav>
@@ -28,159 +25,116 @@
       <main id="m">
           <div id="name">
 
-              <h1 class="heading">Family Members</h1>
-               <table id="table1"> 
-          <thead id="tHead">
+              <h1 class="heading">Reading Activity</h1>
+               <table id="tab"> 
+        <thead id="tHead">
+              <th>Date</th>
               <th>Username</th>
-              <th>Family</th>
-              <th>Books Read</th>
+              <th>Account Type</th>
+              <th>Title</th>
+              <th>Book Format</th>
+              <!-- <th>Time</th> -->
               <th>Pages Read</th>
-              <th>Charity Money Earned</th>
+              <th>Book Finished</th>
+              <th>Notes</th>
           </thead>
           <tbody>
-              <tr v-for="member in familyMembers[0]" v-bind:key="member.id">
-                  <td id="username">{{member.username}}</td>
-                  <td id="familyName">{{member.familyName}}</td>
-                  <td id="books">{{member.booksCompleted}}</td>
-                  <td id="pages">{{member.pagesRead}}</td>
-                  <td id="moneyMoney">${{Math.floor(member.pagesRead / 500) * 5}}</td>
+              <tr id = "tr" v-for="log in logs" v-bind:key="log.recordId">
+                  <td id="user">{{log.dateTime}}</td>
+                  <td id="userN">{{log.username}}</td>
+                  <td id="famFam">{{log.accountType}}</td>
+                  <td id="book">{{log.bookTitle}}</td>
+                  <td id="frmMat">{{log.format}}</td>
+                  <!-- <td id="tme">{{log.timeReading}}</td> -->
+                   <td id="pages1">{{log.pagesRead}}</td>
+                   <td id="finish">{{log.completed}}</td>
+                   <td id="note">{{log.notes}}</td>     
+                               
+                  <!-- <td id="books">{{family.booksCompleted}}</td>
+                  <td id="pages">{{family.pagesRead}}</td>
+                  <td id="money">$ {{family.moneyEarned}}</td> -->
                 </tr>
           </tbody>
       </table>
               </div>
-          <div id="stats">
-              <h1 class="heading">Family Reading Accounts</h1>
-              <table>
-          <thead>
-              <th> Family Name</th>
-              <th> Total Books Read </th>
-              <th> Total Pages Read </th>
-              <th> Total Money Earned </th>
-          </thead>
-          <tbody>
-              <tr v-for="account in familyAccounts" v-bind:key="account.familyName" id="row">
-                  <td class="rows" id="username">{{account.familyName}}</td>
-                  <td class="rows" id="bcd">{{account.booksCompleted}}</td>
-                  <td class="rows" id="prd">{{account.pagesRead}}</td>
-                  <td class="rows" id="med">${{Math.floor(account.pagesRead / 500) * 5}}</td>
-                </tr>
-          </tbody>
-      </table>
-      </div>
               <!-- <family-account-list id="list" /> -->
-               <div id="options">
-          <router-link v-bind:to="{ name: 'newAccount' }"><button id="new">Create New Family Account</button></router-link>
-        <router-link v-bind:to="{name: 'addUser'}"><button id="update">Add User to Family Account</button></router-link>
-      </div>
-
       </main>
       </div>
 </template>
 
 <script>
-// import FamilyAccountList from '../components/FamilyAccountList.vue';
+import moment from 'moment'
 import databaseService from '../services/DatabaseService'
-import loading from './loading.vue';
+import '@fortawesome/fontawesome-free/css/all.css'
+import '@fortawesome/fontawesome-free/js/all.js'
 export default {
-  components: { loading },
-//   components: { FamilyAccountList },
-   data() {
+  data() {
         return {
-            familyInfo:{
-                familyName: '',
-                userId: this.$store.state.user.id
-            },
-            familyAccounts: [],
-            familyMembers: [],
-            memberStats: [],
+            logs: [],
             isLoading: '',
-            pagesRead: '',
-            booksCompleted: '',
-            moneyEarned: '',
-            moneyDonated: '',
-            familyId: '',
-            totals: [],
-            test: 0
+            formattedDate:[]
         };
     },
     created() {
-        this.isLoading = true;
-        databaseService.getFamilyAccounts(this.$store.state.user.id).then(response => {
-            this.familyAccounts = response.data;
-            this.familyAccounts.forEach( account => {
-                account.moneyEarned = 0;
-                account.pagesRead = 0;
-                account.booksCompleted = 0;
-        databaseService.getUserByFamily(account.familyId).then( resp=> {
-            this.familyMembers.push(resp.data)
-            this.familyMembers[0].forEach( member => {
-                account.booksCompleted = account.booksCompleted + member.booksCompleted
-                account.moneyEarned = account.moneyEarned + member.moneyEarned
-                account.pagesRead = account.pagesRead + member.pagesRead});
-            // FIX THIS MESS!!!!
-            let a = {
-                famName: '',
-                famPagesRead: 0,
-                famBooksComp: 0,
-                famMoney: 0
-            }
-            a.famName = resp.data.familyName
-            this.test = parseInt(resp.data.data.moneyEarned);
-            a.famPagesRead = parseInt(a.famPagesRead + resp.data.data.pagesRead);
-            a.famBooksComp = a.famBooksComp + resp.data.booksCompleted;
-            a.famMoney = a.famMoney + resp.data.moneyEarned
-
-            this.totals.push(a);
-
-            this.isLoading = false;
-        })
-
-            
-        })})
-        databaseService.getFamilyPagesRead(this.familyAccounts.familyId).then(response => {
-            this.pagesRead = response;
-            console.log(this.familyAccounts.familyId)
-        })
-        // this.familyAccounts.forEach( account => {
-        // databaseService.getUserByFamily(account.familyId).then( response => {
-        //     this.familyMembers.add(response.data)
-        //     this.isLoading = false;
-        //     console.log(this.familyMembers)
-        // });
-        // })
-    },
-    methods:{
-    getTotalPagesRead(familyId) {
-        databaseService.getFamilyPagesRead(familyId).then(el => {
-            return el.data
-        })
-    },
-    getTotalBooksCompleted(familyId) {
-        databaseService.getFamilyBooksCompleted(familyId).then(el => {
-            return el.data
-        })
-    },
-     getTotalMoneyEarned(familyId) {
-        databaseService.getFamilyMoneyEarned(familyId).then(el => {
-            return el.data
-        })
-
-},   totRead(num){
-            return Math.floor(num / 500) * 5
-        }
+        // this.isLoading = true;
+        databaseService.getReadingLogs(this.$store.state.user.id).then( response => {
+            this.logs = response.data;
+           this.logs.forEach( log => {
+             if(log.dateTime) {
+               log.dateTime = moment(String(log.dateTime)).format('MM/DD/YYYY')
+             }
+           })
+            // this.isLoading = false;
+        });
     }
+
 }
 </script>
 
-<style>
-#bcd, #prd, #med{
+<style scoped>
+#userN{
+    margin: 0%;
+    margin-left: 30px;
+    margin-top: 30px;
+}
+#famFam{
+    margin-left: 70px;
+}
+#book{
+    margin-left: 30px;
+    padding-left: 30px;
+    padding-right: 40px;
+}
+#tme{
+    text-align: left;
+    margin-left: 40px;
+    padding-right: 70px
+}
+#finish{
+    margin-left: 60px;
+    padding-right: 50px;
+}
+#note{
+    margin-left: 80px;
+    padding: 0;
+}
+#frmMat{
+   
+}
+
+#pages1{
+    margin-right: 40px;
+}
+
+#bcd, #prd, #med, #pages1, #tme, #fmat{
 font-family: Arial, Helvetica, sans-serif;
+/* text-align: left; */
 }
 .rows{
-    margin-left: 40px;
+    /* margin-left: 40px; */
 }
-tHead{
-    margin-left: 20px;
+#tHead{
+    /* margin-left: 20px; */
 }
 
 #innerNav{
@@ -243,7 +197,9 @@ main{
 }
 #m{
     height: 80%;
-    padding: 40px
+    padding: 40px;
+    align-self: center;
+    justify-self: center;
 }
 .heading{
     display: flex;
@@ -253,24 +209,25 @@ main{
 main{
     display: flex;
     flex-direction: column;
+    align-content: center;
     /* background-color: rgb(150,165,60); */
     /* margin: 25px; */
-    width: 100%;
+    /* width: 100%; */
     /* height: 80%; */
 }
 
 #name, #stats{
-    display: flex;
+    /* display: flex; */
+
     flex-direction: column;
     justify-content: center;
     align-content: center ;
     align-items: center;
-    color: rgb(245,245,220);
+    color: rgb(150,165,60);
     font-family: 'abeatbyKai', sans-serif;
-      background-color: rgb(255,117,24);
-    padding: 20px;
-    padding-right: 0%;
-    padding-left: 0%;
+      background-color: rgb(245,245,220);
+    /* padding-right: 40px;
+    padding-left: 40px; */
     margin-bottom: 40px;
     margin-top: 40px;
      -webkit-box-shadow: 10px 10px 10px 10px darkolivegreen;
@@ -347,9 +304,11 @@ h1{
     display: flex;
     flex-grow: 1;
     align-self: center;
-    color: rgb(245,245,220);
+    color: rgb(255,117,24);
+    font-size: 50px;
     font-family: 'abeatbyKai', sans-serif;
-  text-shadow: 4px 4px darkolivegreen;
+    color:rgb(255,196,12);
+  /* text-shadow: 4px 4px darkolivegreen; */
 }
 
 #list{
@@ -377,59 +336,46 @@ h1{
   filter: opacity(0.5) drop-shadow(0,0,0 rgb(150,165,60));
   
  }
- table{
-     display: flex;
-     flex-grow: 1;
-     width: 100vh;
-     flex-direction: column;
-     justify-content: space-between;
-     align-items: center;
-     
+ #tab{
+     margin-right: 150px;
+
+     /* display: flex;
+     flex-direction: column; */
+     /* justify-content: space-between; */
+     /* align-items: center;
+     table-layout:fixed; */
  }
  th{
-     margin-right: 20px;
+     margin-right: 30px;
  }
- tbody{
-     display: flex;
-     flex-direction: column;
-     flex-grow: 1;
-     width: 100vh;
-     justify-content: space-between;
-     align-content: space-between;
-     font-size: 20px;
- }
- tr{
-    display: flex;
-    width: 100vh;
-    justify-content: space-between;
-    padding-right: 200px
-     
- }
+
+ /* tbody{ */
+     /* display: flex;
+     flex-direction: column; */
+     /* flex-grow: 1; */
+     /* font-size: 18px;
+ } */
  td{
-     display:flex;
-     width: 100vh;
-     padding-right: 100px;
-     margin-top: 15px
+     /* display:flex; */
+     /* width: 100vh; */
+     margin: 0%;
+     margin-top: 30px
+     
+     /* padding-right: 100px; */
 
  }
+
  thead{
      display: flex;
      flex-grow: 1;
-     width: 100vh;
+     /* width: 100vh; */
      font-size: 30px;
      justify-content: space-between;
      align-content: space-between;
      color:rgb(255,196,12);
     
  }
- #options{
-    display: flex;
-    flex-direction: row;
-    /* margin-left: 75px; */
-    justify-content: center;
-    
 
-}
 #books{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px
@@ -441,7 +387,7 @@ h1{
 #moneyMoney{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 20px;
-    margin-left: 20px
+    /* margin-left: 20px */
 }
 #new, #update{
       -webkit-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
@@ -501,6 +447,10 @@ text-decoration: none;
     display: flex;
     width: 600px;
     margin-right: 400px;
+}
+td{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 </style>

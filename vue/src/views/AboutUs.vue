@@ -149,7 +149,8 @@ export default {
    font-family: 'abeatbyKai', sans-serif;
  }
  h1{
-   margin-left: 900px;
+     margin-left: auto;
+    margin-right: auto;
    
  }
  p{

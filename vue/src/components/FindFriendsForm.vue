@@ -343,6 +343,7 @@ form{
     display: flex;
     flex-direction: column;
     padding: 5px;
+    
    
 }
 body{
@@ -363,7 +364,6 @@ h1{
     justify-content: center;
     color:rgb(245,245,220);
     font-family: 'abeatbyKai', sans-serif;
-    margin-left: 120px
 }
 
 #page{

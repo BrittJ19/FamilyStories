@@ -27,8 +27,7 @@ export default new Vuex.Store({
     NewFamilyAccount: '',
     familyAccounts: [],
     familyMembers: [],
-    friends: []
-  },
+    // friends: [],
     books: [
       {
         title: "Misery",
@@ -70,7 +69,7 @@ export default new Vuex.Store({
       username:'Thezachman',
     }],
     
-
+  },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
       state.token = token;
