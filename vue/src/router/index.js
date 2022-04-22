@@ -9,10 +9,16 @@ import Family from '../views/Family.vue'
 import FamilyAccounts from '../views/FamilyAccounts.vue'
 import AboutUs from '../views/AboutUs'
 import Charities from '../views/Charities'
+<<<<<<< HEAD
 import Profile from '../views/Profile.vue'
 import Troubleshoot from '../views/Troubleshoot.vue'
 // import RecordReadingActivity from '../components/RecordReadingActivity'
 import MyBook from '../views/MyBook.vue'
+=======
+import Profile from '../views/Profile'
+import Troubleshoot from '../views/Troubleshoot'
+import MyBook from '../views/MyBook'
+>>>>>>> c90bf4f14897a503b3854aec2cf1325286688ba5
 import FamilyAccountList from '../components/FamilyAccountList.vue'
 import loading from '../components/loading.vue'
 import addUser from '../components/AddUser'
@@ -21,10 +27,7 @@ import CheckActivity from '../views/CheckActivity.vue'
 import createAccount from '../views/CreateAccount.vue'
 import BookSlider from '../components/BookSlider.vue'
 import RecordReadingActivity from '../views/RecordReadingActivity.vue'
-import ReadingLog from '../views/ReadingLog.vue'
-
-
-
+import ReadingLog from '../components/ReadingLog.vue'
 
 Vue.use(Router)
 
@@ -125,7 +128,7 @@ const router = new Router({
       component: addUser
     },
     {
-      path:"/friends",
+      path:"/profile/:username/friends",
       name:"friends",
       component: FindFriendsForm
     },
@@ -144,17 +147,25 @@ const router = new Router({
     name: "favoriteBooks",
     component: BookSlider
     },
-  
+  {
+    path:'/reading/log',
+    name:'readingLog',
+    component:ReadingLog
+  },
+
+
     {
-    path:"/reading/log",
-    name:"readingLog",
-    component: ReadingLog
-    },
-    {
+<<<<<<< HEAD
       path:"/reading/activity",
       name:"readingActivity",
       component: RecordReadingActivity
     },
+=======
+    path:"/reading/record",
+    name:"readingRecord",
+    component: RecordReadingActivity
+    }
+>>>>>>> c90bf4f14897a503b3854aec2cf1325286688ba5
     // {
     //   path:"/mybooks/addbook",
     //   name:"addbook",

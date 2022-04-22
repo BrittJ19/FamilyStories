@@ -15,7 +15,7 @@
           <router-link id="charities" v-bind:to="{name: 'charities'}"> Charities We Work With </router-link>
         </div> 
       <div id="promo">
-          <h3>Charites</h3>
+          <h3>Charities</h3>
       <!-- <router-link id="link" :to="{ name: 'register' }"><p>Check Activity</p></router-link> -->
         </div>
     </div>
@@ -62,7 +62,7 @@ export default {
  
  #promo{
    display: flex;
-   flex-grow: 1;
+   /* flex-grow: 1; */
    background-color: rgb(150,165,60);
    justify-self: center;
    justify-content: center;
@@ -73,11 +73,33 @@ export default {
    font-size: 25pt;
    color: rgb(245,245,220);
  }
+ #site-links{
+  display: flex;
+  flex-grow: 1;
+  padding-top: none;
+  text-decoration: none;
+  justify-content: flex-end;
+  align-content: flex-end;
+  /* justify-content: space-evenly; */
+  font-family: 'abeatbyKai', sans-serif; 
+}
  #Charities{
-  display:flex;
-  /* flex-direction: column; */
+  /* display:flex; */
+  flex-direction: column;
   background-color: rgb(245,245,220);
   text-align: center;
+  /* display: grid; */
+
+    /* width: 100vh; */
+
+    /* grid-template-columns: 1fr 1fr 1fr 1fr;
+
+    grid-template-areas: 
+    "logo1 text text ."
+    "logo2 text text ."
+    "logo3 text text ."
+    "logo4 text text ."
+    ; */
 
    
  }
