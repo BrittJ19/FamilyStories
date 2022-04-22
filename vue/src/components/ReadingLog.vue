@@ -37,7 +37,7 @@
                       <option value="Other">Other</option>
                   </select>
           </div> 
-          <div>
+          <div class = "my-class">
             <p id="pages"> Pages Read</p>
 <input type="number" id="pages" name="pages"
        min="5" max="100" step="5" v-model.number="readingRecord.pagesRead">
@@ -60,12 +60,15 @@
       <!-- <h1 class="h3 mb-3 font-weight-normal">Create Account</h1> -->
       
       <!-- <router-link id="account" :to="{ name: 'login' }">Have an account?</router-link> -->
+
+      <div class = "btn-group">
       <div id="submit-button">
       <button id="submit" class="btn btn-lg btn-primary btn-block" type="submit" @click="addLog()">
         Log Reading
       </button>
       </div>
       <router-link v-bind:to="{ name: 'userProfile' }"><button id="back">Back</button></router-link>
+      </div>
     </form>
   </div>
   </div>
@@ -266,11 +269,19 @@ body{
     justify-content: center;
     align-self: center;
     /* margin: 100px; */
-    height: 100vh;
+    height: 115vh;
     width: 100vh;
     /* margin-left: 300px;
     margin-right: 300px; */
     border-radius: 5%
+}
+
+#minutes{
+  text-align: center;
+}
+
+#pages{
+  text-align: center;
 }
 form{
     padding-top: 0%;
@@ -290,8 +301,18 @@ input{
     margin: 5px;
     height: 30px;
     border-radius: 5%;
-    width: 200px
+    width: 200px;
+    background-color: rgb(245, 230, 185);
 }
+
+#results{
+  background-color: rgb(245, 230, 185);
+}
+
+#selections{
+  background-color: rgb(245, 230, 185);
+}
+
 #submit{
     align-self: center;
 }
@@ -309,15 +330,30 @@ h1{
     justify-content: center;
 }
 #submit{
-    padding: 15px;
+     padding: 15px;
     border-radius: 10%;
+    cursor: pointer;
+    margin: 4px 2px;
+    background-color: rgb(235, 145, 11);
+    font-weight: bolder;
 }
 #back{
     align-self: center;
   padding: 15px;
   border-radius: 10%;
   width: 120px;
+  cursor: pointer;
+  background-color: rgb(235, 145, 11);
+  font-weight: bolder;
 }
+
+#submit:hover{
+  box-shadow: 0 12px 16px 0 rgba(238, 233, 231, 0.774),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+#back:hover{
+  box-shadow: 0 12px 16px 0 rgba(238, 233, 231, 0.774),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
 .form-element{
   display: flex;
   flex-direction: column;
@@ -343,10 +379,14 @@ p{
     width: 225px
 }
 #minutes{
-    display: flex;
+   /* display: flex; */
     flex-direction: column;
     align-self: center;
     width: 270px
+}
+.my-class{
+  align-self: center;
+  align-content: center;
 }
 
 

@@ -11,10 +11,11 @@
 </template>
 
 <script>
+import DatabaseService from '../services/DatabaseService';
 
 
 export default {
-   
+
     name: "add-book-form",
     data() {
         return {
@@ -22,17 +23,43 @@ export default {
                 title: '',
                 author: '',
                 isbn: ''
-            }
+            },
+            library: []
         }
     },
+    created() {
+        DatabaseService.getBook(this.$store.state.user.id).then(resp => {
+            this.library=resp.data;
+            this.library.forEach(element => {
+                this.$store.commit('ADD_BOOK', element)
+                console.log(resp.data)
+            });
+        })
+
+    },
+   
     methods: {
         addBook() {
-            this.$store.commit('ADD_BOOK', this.book);
-            this.book = {
-                title: '',
-                author: '',
-                isbn: ''
-            };
+            DatabaseService.createBook(this.$store.state.user.id,this.book)
+             this.$store.commit('ADD_BOOK', this.book)
+            // .then(resp =>{
+            //     if(resp.status == 200) {
+            //         this.$router.push({
+            //             name:'myBooks'
+            //         })
+            //     }
+            // });
+            
+            // // this.book = {
+            // //     title: '',
+            // //     author: '',
+            // //     isbn: ''
+            // };
+        }
+    },
+    computed: {
+        updateLibrary() {
+            return this.$store.state.books
         }
     }
 }

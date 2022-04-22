@@ -33,7 +33,9 @@ export default{
     addMemberToFamily(userFamily) {
         return database.post('/family/addMember', userFamily);
     },
-
+    addMemberToFriends(userFriends) {
+        return database.post('/profile/:username/friends', userFriends);
+    },
     getCurrentUser(userId) {
         return database.get(`/user/${userId}`)
     },
@@ -76,6 +78,18 @@ export default{
     },
     getReadingLogs(userId) {
         return database.get(`reading/${userId}/logs`)
+    },
+    createBook(userId,AddBookForm) {
+        return database.post(`/${userId}/mybooks/addbook`, AddBookForm)
+    },
+    getBook(userId) {
+        return database.get(`/${userId}/mybooks`)
+    },
+    createFriend(userId, FindFriendForm){
+        return database.post(` /${userId}/friends`, FindFriendForm)
+    },
+    getFriendsList(userId){
+        return database.get(`/${userId}/myFriends`)
     }
 
 

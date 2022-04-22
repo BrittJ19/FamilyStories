@@ -27,6 +27,7 @@ export default new Vuex.Store({
     NewFamilyAccount: '',
     familyAccounts: [],
     familyMembers: [],
+    friends: []
   },
     books: [
       {
@@ -40,12 +41,12 @@ export default new Vuex.Store({
         isbn: "9781982147662"
       },
       {
-        title: "The Giving Tree",
+        title: "The Old Man and the Sea",
         author: "Ernest Hemingway",
         isbn: "9780684830490"
       },
       {
-        title: "Le Petit Prince",
+        title: "The Giving Tree",
         author: "Shel Silverstein",
         isbn: "0060256656"
       },
@@ -65,6 +66,9 @@ export default new Vuex.Store({
         isbn: "9780545582995" 
       }
     ],
+    friends: [{
+      username:'Thezachman',
+    }],
     
 
   mutations: {
@@ -101,10 +105,14 @@ export default new Vuex.Store({
     },
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
-    // ADD_BOOK(state, book){
-    //   state.books.push(book);
-    // }
-  }},
+    },
+    ADD_BOOK(state,book){
+      state.books.push(book);
+    },
+    ADD_FRIEND(state, user) {
+      state.friends.push(user);
+    }
+  },
   actions: {},
   modules: {},
   strict: true

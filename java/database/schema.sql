@@ -1,6 +1,8 @@
 BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS family;
+DROP TABLE IF EXISTS friends;
+DROP TABLE IF EXISTS users_friends;
 DROP TABLE IF EXISTS users_books;
 DROP TABLE IF EXISTS users_family;
 DROP TABLE IF EXISTS reading_record;
@@ -58,10 +60,9 @@ CREATE TABLE users_famiLy (
 
 CREATE TABLE books (
 	book_id serial,
-	author_name varchar(50) NOT NULL UNIQUE,
-	title varchar NOT NULL,
-	genre varchar NOT NULL,
-	isbn_id int NOT NULL,
+	author_name varchar(50),
+	title varchar,
+	isbn varchar,
 	CONSTRAINT PK_books PRIMARY KEY (book_id)
 );
 
@@ -94,6 +95,25 @@ CREATE TABLE reading_record (
 	CONSTRAINT PK_reading PRIMARY KEY (record_id),
 	CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
+CREATE TABLE friends (
+    friend_id serial NOT NULL,
+	nickname varchar (50),
+    username varchar NOT NULL,
+	CONSTRAINT PK_friends PRIMARY KEY (friend_id),
+	CONSTRAINT FK_users FOREIGN KEY (username) REFERENCES users(username)
+);
+
+CREATE TABLE users_friends (
+user_id int NOT NULL,
+username varchar NOT NULL,
+friend_id int NOT NULL,
+CONSTRAINT FK_users FOREIGN KEY (user_id) REFERENCES users(user_id),
+
+CONSTRAINT FK_friends FOREIGN KEY (friend_id) REFERENCES friends(friend_id)
+);
+
+
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
