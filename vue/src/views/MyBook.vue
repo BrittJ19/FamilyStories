@@ -23,21 +23,36 @@
         </div>
         </div>
     </div>
-     <main>
+     <div id="main">
         <div id= "myBooks">
         <h1>My Books</h1>
         
         <!-- <new-books v-for="(disBook,index) in books" v-bind:key="index"/>  -->
          <!-- <new-books v-for="disBook in book" v-bind:key="disBook.isbn"/>    -->
   </div>
+  <br>
+   <br>
+    <br>
+     <br>
+      <br>
+       <br>
+        <br>
+         <br>
+          <br>
+           <br>
+            <br>
   <div class ="bookShelf">
   <new-books v-for="(disBook,index) in $store.state.books" v-bind:key="index"
   v-bind:book="disBook"/>
    </div>
+   <div id="bookSearch">
+     <book-search/>
+   </div>
+   <br>
    <div id= "bookForm">
       <add-book-form/>
       </div>
-      </main>
+     </div>
        </div>
        
  
@@ -48,11 +63,13 @@
 <script>
  import NewBooks from '../components/NewBooks.vue'
 import AddBookForm from '../components/AddBookForm.vue'
+import BookSearch from '../components/BookSearch.vue'
 
 
 export default {
     components: { AddBookForm,
-     NewBooks
+     NewBooks,
+        BookSearch
  }
 }
  
@@ -98,7 +115,7 @@ export default {
 }
 #banner{
   display: flex;
-   background-color: rgb(255,117,24);
+   /* background-color: rgb(255,117,24); */
    flex-direction: column;
 }
 #nav{
@@ -172,9 +189,9 @@ h1{
   justify-content: center;
  
 }
-main{
+#main{
     grid-area: main;
-     background-color: rgb(245,245,220);
+     /* background-color: rgb(245,245,220); */
      background-size: 100vh;
     margin:0px
 }
@@ -191,12 +208,14 @@ main{
   justify-content: space-evenly;
 }
 #bookForm{
+
   text-align: center;
   padding: 20px;
 }
 .bookShelf{
+  background-color: rgb(245,245,220, .80);
   max-height:  500px;
-  border: 1px solid;
+  /* border: 1px solid; */
   display:flex;
   overflow-x: auto;
 }

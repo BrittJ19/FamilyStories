@@ -5,7 +5,7 @@
     <input class="title-input" type="text" placeholder="Title" v-model="book.title" />
     <input class="author-input" type="text" placeholder="Author" v-model="book.author" />
     <input class="isbn-input" type="text" placeholder="ISBN" v-model="book.isbn" />
-    <button type="submit">Add</button>
+    <button>Add</button>
   </form>
 </div>
 </template>
@@ -40,19 +40,26 @@ export default {
    
     methods: {
         addBook() {
-            DatabaseService.createBook(this.book).then(resp =>{
-                if(resp.status == 200) {
-                    this.$router.push({
-                        name:'myBooks'
-                    })
-                }
-            });
+            DatabaseService.createBook(this.$store.state.user.id,this.book)
+             this.$store.commit('ADD_BOOK', this.book)
+            // .then(resp =>{
+            //     if(resp.status == 200) {
+            //         this.$router.push({
+            //             name:'myBooks'
+            //         })
+            //     }
+            // });
             
             // // this.book = {
             // //     title: '',
             // //     author: '',
             // //     isbn: ''
             // };
+        }
+    },
+    computed: {
+        updateLibrary() {
+            return this.$store.state.books
         }
     }
 }

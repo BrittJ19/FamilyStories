@@ -39,12 +39,12 @@ export default new Vuex.Store({
         isbn: "9781982147662"
       },
       {
-        title: "The Giving Tree",
+        title: "The Old Man and the Sea",
         author: "Ernest Hemingway",
         isbn: "9780684830490"
       },
       {
-        title: "Le Petit Prince",
+        title: "The Giving Tree",
         author: "Shel Silverstein",
         isbn: "0060256656"
       },
@@ -102,18 +102,14 @@ export default new Vuex.Store({
     },
     SET_FAMILY_ACCOUNTS(state, familyAccountsArray) {
       state.familyAccounts = familyAccountsArray;
-<<<<<<< HEAD
     },
      ADD_BOOK(state, book){
       state.books.push(book);
-     } 
+     },
+     BOOK_SEARCH(state, book) {
+      state.search = book;
+    } 
   },
-=======
-    // ADD_BOOK(state, book){
-    //   state.books.push(book);
-    // }
-  }},
->>>>>>> 31df02df7f476203ccf77bfe10d2bcb021ae3580
   actions: {},
   modules: {},
   strict: true

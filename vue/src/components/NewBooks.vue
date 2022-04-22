@@ -14,6 +14,7 @@
 export default {
     name: 'new-book',
     props: ["book"]
+    
 }
 </script>
 

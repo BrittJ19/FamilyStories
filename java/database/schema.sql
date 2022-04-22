@@ -58,8 +58,8 @@ CREATE TABLE users_famiLy (
 
 CREATE TABLE books (
 	book_id serial,
-	author_name varchar(50) NOT NULL,
-	title varchar NOT NULL,
+	author_name varchar(50),
+	title varchar,
 	isbn varchar,
 	CONSTRAINT PK_books PRIMARY KEY (book_id)
 );
